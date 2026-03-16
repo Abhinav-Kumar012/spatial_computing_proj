@@ -1,0 +1,3 @@
+[submodule "PanCollection"]
+	path = PanCollection
+	url = https://github.com/XiaoXiao-Woo/PanCollection.git
