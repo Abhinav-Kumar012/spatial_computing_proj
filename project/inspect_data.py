@@ -9,8 +9,9 @@ import h5py
 import numpy as np
 import torch
 
-train_path = "Dataset/WV3/train_wv3-001.h5"
-test_path  = "Dataset/WV3/test_wv3_multiExm1.h5"
+data_folder = "../datav1"
+train_path=f"{data_folder}/valid_wv3.h5"
+test_path=f"{data_folder}/test_wv3_OrigScale_multiExm1.h5"
 
 # ── 1. Raw HDF5 inspection ─────────────────────────────────────────────────────
 for label, path in [("TRAIN", train_path), ("TEST", test_path)]:
