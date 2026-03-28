@@ -1,7 +1,7 @@
 from nsga2_search import run_nsga2
 from visualize_results import *
 
-data_folder = "datav1"
+data_folder = "../datav1"
 train_path=f"{data_folder}/valid_wv3.h5"
 test_path=f"{data_folder}/test_wv3_OrigScale_multiExm1.h5"
 
