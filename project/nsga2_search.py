@@ -8,7 +8,7 @@ from train_eval import train_and_evaluate
 
 class FusionOptimization(Problem):
 
-    def __init__(self, train_path, test_path):
+    def __init__(self, train_path, test_path, epochs=5):
 
         super().__init__(
             n_var=5,
@@ -17,8 +17,9 @@ class FusionOptimization(Problem):
             xu=np.array([64,64,16,0.3,1e-3])
         )
 
-        self.train_path=train_path
-        self.test_path=test_path
+        self.train_path = train_path
+        self.test_path  = test_path
+        self.epochs     = epochs
 
     def _evaluate(self, X, out, *args, **kwargs):
 
@@ -48,7 +49,7 @@ class FusionOptimization(Problem):
                 "head_channel":       head_channel,
                 "dropout":            float(x[3]),
                 "lr":                 float(x[4]),
-                "epochs":             5
+                "epochs":             self.epochs
             }
 
             print(f"\n[Individual {i+1}/{len(X)}]")
@@ -75,22 +76,22 @@ class FusionOptimization(Problem):
         out["F"]=np.array(results)
 
 
-def run_nsga2(train_path,test_path):
+def run_nsga2(train_path, test_path, epochs=5, pop_size=10, n_gen=10):
 
     print("\n[run_nsga2] Starting NSGA-2 optimisation")
     print(f"  train: {train_path}")
     print(f"  test:  {test_path}")
-    print(f"  pop_size=10  n_gen=10")
+    print(f"  epochs={epochs}  pop_size={pop_size}  n_gen={n_gen}")
 
-    problem=FusionOptimization(train_path,test_path)
+    problem  = FusionOptimization(train_path, test_path, epochs=epochs)
 
-    algorithm=NSGA2(pop_size=10)
+    algorithm = NSGA2(pop_size=pop_size)
 
-    res=minimize(problem,
-                 algorithm,
-                 ('n_gen',10),
-                 seed=1,
-                 verbose=True)
+    res = minimize(problem,
+                   algorithm,
+                   ('n_gen', n_gen),
+                   seed=1,
+                   verbose=True)
 
     print("\n[run_nsga2] Optimisation complete")
     print(f"  Pareto front size: {len(res.F)}")
