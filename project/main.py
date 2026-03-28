@@ -1,8 +1,9 @@
 from nsga2_search import run_nsga2
 from visualize_results import *
 
-train_path="Dataset/WV3/train_wv3-001.h5"
-test_path="Dataset/WV3/test_wv3_multiExm1.h5"
+data_folder = "datav1"
+train_path=f"{data_folder}/valid_wv3.h5"
+test_path=f"{data_folder}/test_wv3_OrigScale_multiExm1.h5"
 
 res=run_nsga2(train_path,test_path)
 

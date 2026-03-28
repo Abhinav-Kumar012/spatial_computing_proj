@@ -1,2 +1,4 @@
 .venv/
 datav1/
+**/*.png
+**/__pycache__/
