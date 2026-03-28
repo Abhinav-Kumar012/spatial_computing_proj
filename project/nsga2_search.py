@@ -26,13 +26,25 @@ class FusionOptimization(Problem):
 
         for x in X:
 
+            head_channel = int(x[2])
+
+            # ms_target_channel must be divisible by head_channel because
+            # Attention splits it into num_head × head_channel for the reshape.
+            # Round down to the nearest valid multiple (minimum = head_channel).
+            ms_raw = int(x[1])
+            ms_target_channel = max(head_channel, (ms_raw // head_channel) * head_channel)
+
+            # Apply the same rounding to pan_target_channel for consistency.
+            pan_raw = int(x[0])
+            pan_target_channel = max(head_channel, (pan_raw // head_channel) * head_channel)
+
             params={
-                "pan_target_channel":int(x[0]),
-                "ms_target_channel":int(x[1]),
-                "head_channel":int(x[2]),
-                "dropout":float(x[3]),
-                "lr":float(x[4]),
-                "epochs":5
+                "pan_target_channel": pan_target_channel,
+                "ms_target_channel":  ms_target_channel,
+                "head_channel":       head_channel,
+                "dropout":            float(x[3]),
+                "lr":                 float(x[4]),
+                "epochs":             5
             }
 
             metrics=train_and_evaluate(params,self.train_path,self.test_path)
