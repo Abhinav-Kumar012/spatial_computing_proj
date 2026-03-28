@@ -59,6 +59,8 @@ def train_and_evaluate(params, train_path, test_path):
 
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"  Model parameters: {n_params:,}")
+    # Store for use as a 7th NSGA-2 objective
+    _n_params = n_params
 
     optimizer = torch.optim.Adam(model.parameters(), lr=params["lr"])
     criterion = torch.nn.L1Loss()
@@ -105,9 +107,11 @@ def train_and_evaluate(params, train_path, test_path):
     gt_all   = gt_val.numpy()
 
     metrics = compute_metrics(pred_all, gt_all)
+    metrics["n_params"] = _n_params
 
     print(f"  Metrics: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "
           f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}  "
-          f"SF={metrics['SF']:.4f}  SD={metrics['SD']:.4f}")
+          f"SF={metrics['SF']:.4f}  SD={metrics['SD']:.4f}  "
+          f"n_params={metrics['n_params']:,}")
 
     return metrics

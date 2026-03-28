@@ -61,17 +61,18 @@ class FusionOptimization(Problem):
             metrics=train_and_evaluate(params,self.train_path,self.test_path)
 
             results.append([
-                metrics["SAM"],
-                metrics["ERGAS"],
-                -metrics["CC"],
-                metrics["SD"],
-                -metrics["SF"],
-                -metrics["SSIM"],
-                metrics["ERGAS"]
+                metrics["SAM"],        # obj 0 — minimise
+                metrics["ERGAS"],      # obj 1 — minimise
+                -metrics["CC"],        # obj 2 — minimise (↑ CC)
+                metrics["SD"],         # obj 3 — minimise
+                -metrics["SF"],        # obj 4 — minimise (↑ SF)
+                -metrics["SSIM"],      # obj 5 — minimise (↑ SSIM)
+                metrics["n_params"],   # obj 6 — minimise (smaller model)
             ])
 
             print(f"  -> objectives: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "
-                  f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}")
+                  f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}  "
+                  f"n_params={metrics['n_params']:,}")
 
         out["F"]=np.array(results)
 
