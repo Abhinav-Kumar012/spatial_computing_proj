@@ -24,12 +24,16 @@ class FusionOptimization(Problem):
 
         results=[]
 
-        for x in X:
+        print(f"\n{'='*60}")
+        print(f"[NSGA-2] Evaluating {len(X)} individual(s)")
+        print(f"{'='*60}")
+
+        for i, x in enumerate(X):
 
             head_channel = int(x[2])
 
             # ms_target_channel must be divisible by head_channel because
-            # Attention splits it into num_head × head_channel for the reshape.
+            # Attention splits it into num_head x head_channel for the reshape.
             # Round down to the nearest valid multiple (minimum = head_channel).
             ms_raw = int(x[1])
             ms_target_channel = max(head_channel, (ms_raw // head_channel) * head_channel)
@@ -47,6 +51,12 @@ class FusionOptimization(Problem):
                 "epochs":             5
             }
 
+            print(f"\n[Individual {i+1}/{len(X)}]")
+            print(f"  pan_ch={pan_target_channel} (raw={pan_raw})  "
+                  f"ms_ch={ms_target_channel} (raw={ms_raw})  "
+                  f"head_ch={head_channel}  "
+                  f"dropout={params['dropout']:.3f}  lr={params['lr']:.2e}")
+
             metrics=train_and_evaluate(params,self.train_path,self.test_path)
 
             results.append([
@@ -59,10 +69,18 @@ class FusionOptimization(Problem):
                 metrics["ERGAS"]
             ])
 
+            print(f"  -> objectives: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "
+                  f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}")
+
         out["F"]=np.array(results)
 
 
 def run_nsga2(train_path,test_path):
+
+    print("\n[run_nsga2] Starting NSGA-2 optimisation")
+    print(f"  train: {train_path}")
+    print(f"  test:  {test_path}")
+    print(f"  pop_size=10  n_gen=10")
 
     problem=FusionOptimization(train_path,test_path)
 
@@ -73,5 +91,8 @@ def run_nsga2(train_path,test_path):
                  ('n_gen',10),
                  seed=1,
                  verbose=True)
+
+    print("\n[run_nsga2] Optimisation complete")
+    print(f"  Pareto front size: {len(res.F)}")
 
     return res
