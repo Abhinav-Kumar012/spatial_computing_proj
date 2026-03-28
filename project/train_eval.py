@@ -26,14 +26,27 @@ def load_dataset(path, ratio):
 
 
 def train_and_evaluate(params, train_path, test_path):
-
+    """
+    Uses an 80/20 split of train_path (valid_wv3.h5) for training and validation.
+    test_path (512x512, no gt) is NOT used here — it is only for final visual export.
+    The 512x512 test images would require a 96 GB attention matrix and have no gt
+    for computing optimisation objectives, so the val split is the correct choice.
+    """
     ratio = 2047
 
     print(f"\n[train_and_evaluate] Params: {params}")
     print(f"  Device: {device}")
 
-    print("  Loading training data...")
+    print("  Loading data (train+val split from train_path)...")
     pan, gt, ms, lms = load_dataset(train_path, ratio)
+
+    # 80/20 train/val split — val set has gt and matching 64x64 spatial size
+    n       = pan.shape[0]
+    n_train = int(n * 0.8)
+    print(f"  Split: {n_train} train  /  {n - n_train} val  (total {n})")
+
+    pan_tr, gt_tr, ms_tr, lms_tr   = pan[:n_train], gt[:n_train], ms[:n_train], lms[:n_train]
+    pan_val, gt_val, ms_val, lms_val = pan[n_train:], gt[n_train:], ms[n_train:], lms[n_train:]
 
     model = HWViT(
         L_up_channel=ms.shape[1],
@@ -51,8 +64,7 @@ def train_and_evaluate(params, train_path, test_path):
     criterion = torch.nn.L1Loss()
     epochs    = params["epochs"]
 
-    # Mini-batch training — avoids allocating a (1080, heads, 256, 256) attention matrix
-    train_ds = torch.utils.data.TensorDataset(pan, gt, ms, lms)
+    train_ds = torch.utils.data.TensorDataset(pan_tr, gt_tr, ms_tr, lms_tr)
     train_dl = torch.utils.data.DataLoader(train_ds, batch_size=8, shuffle=True)
 
     print(f"  Training: {epochs} epochs, {len(train_dl)} batches/epoch")
@@ -76,24 +88,21 @@ def train_and_evaluate(params, train_path, test_path):
         avg_loss = epoch_loss / len(train_dl)
         print(f"  Epoch [{epoch+1}/{epochs}]  avg_loss={avg_loss:.6f}")
 
-    # Mini-batch evaluation (test file has no 'gt', accumulate predictions)
-    print("  Loading test data...")
-    pan_t, gt_t, ms_t, lms_t = load_dataset(test_path, ratio)
+    # Evaluate on val split (same 64x64 spatial size, has gt)
+    val_ds = torch.utils.data.TensorDataset(pan_val, ms_val, lms_val)
+    val_dl = torch.utils.data.DataLoader(val_ds, batch_size=8, shuffle=False)
 
-    eval_ds = torch.utils.data.TensorDataset(pan_t, ms_t, lms_t)
-    eval_dl = torch.utils.data.DataLoader(eval_ds, batch_size=8, shuffle=False)
-
-    print(f"  Evaluating: {len(eval_dl)} batches")
+    print(f"  Evaluating on val split: {len(val_dl)} batches")
     model.eval()
     preds = []
 
     with torch.no_grad():
-        for pan_b, ms_b, lms_b in eval_dl:
+        for pan_b, ms_b, lms_b in val_dl:
             pred = model(pan_b.to(device), ms_b.to(device), lms_b.to(device)).cpu().numpy()
             preds.append(pred)
 
     pred_all = np.concatenate(preds, axis=0)
-    gt_all   = gt_t.numpy() if gt_t is not None else pred_all  # fallback if no gt
+    gt_all   = gt_val.numpy()
 
     metrics = compute_metrics(pred_all, gt_all)
 
@@ -101,4 +110,4 @@ def train_and_evaluate(params, train_path, test_path):
           f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}  "
           f"SF={metrics['SF']:.4f}  SD={metrics['SD']:.4f}")
 
-    return metrics
+    return metrics
