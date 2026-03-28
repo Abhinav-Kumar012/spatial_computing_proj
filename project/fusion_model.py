@@ -277,6 +277,12 @@ class S_MWiT(nn.Module):
         super(S_MWiT, self).__init__()
         self.pan_ll_channel = pan_ll_channel
         self.WD = DWT_2D()
+        # Projects DWT pan subbands (pan_ll_channel) → ms space (L_up_channel)
+        # for combine and attention q/k (which are all sized to L_up_channel)
+        self.pan_to_ms = nn.Conv2d(pan_ll_channel, L_up_channel, 1, bias=False)
+        # Projects the reconstructed pan path (pan_ll_channel) → L_up_channel
+        # before adding to the ms attention path in conv_x
+        self.pan_path_proj = nn.Conv2d(pan_ll_channel, L_up_channel, 1, bias=False)
         self.v_ll_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
         self.v_lh_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
         self.v_hl_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
@@ -297,19 +303,27 @@ class S_MWiT(nn.Module):
     def forward(self, pan_ll, L_up, back_img):
         wd_ll, wd_lh, wd_hl, wd_hh = torch.split(self.WD(pan_ll), [self.pan_ll_channel, self.pan_ll_channel, self.pan_ll_channel, self.pan_ll_channel], dim=1)
 
-        pre_v = self.combine(x1=wd_ll, x2=L_up, x3=self.mlp(back_img))
+        # Project pan subbands → ms channel space for combine and attention
+        wd_ll_ms = self.pan_to_ms(wd_ll)
+        wd_lh_ms = self.pan_to_ms(wd_lh)
+        wd_hl_ms = self.pan_to_ms(wd_hl)
+        wd_hh_ms = self.pan_to_ms(wd_hh)
+
+        pre_v = self.combine(x1=wd_ll_ms, x2=L_up, x3=self.mlp(back_img))
         v = self.resblock(pre_v)
 
-        v_ll = self.v_ll_attn(q=wd_ll, k=wd_ll, v=v)
-        v_lh = self.v_lh_attn(q=wd_lh, k=wd_ll, v=v)
-        v_hl = self.v_hl_attn(q=wd_hl, k=wd_ll, v=v)
-        v_hh = self.v_hh_attn(q=wd_hh, k=wd_ll, v=v)
+        v_ll = self.v_ll_attn(q=wd_ll_ms, k=wd_ll_ms, v=v)
+        v_lh = self.v_lh_attn(q=wd_lh_ms, k=wd_ll_ms, v=v)
+        v_hl = self.v_hl_attn(q=wd_hl_ms, k=wd_ll_ms, v=v)
+        v_hh = self.v_hh_attn(q=wd_hh_ms, k=wd_ll_ms, v=v)
         v_idwt = self.conv_idwt_up(torch.cat([v_ll, v_lh, v_hl, v_hh], dim=1))
 
+        # DWC path keeps original pan-channel tensors (conv_idwt_pan is pan-sized)
         x_idwt = self.conv_idwt_pan(
             torch.cat([self.wd_ll_conv(wd_ll), self.wd_lh_conv(wd_lh), self.wd_hl_conv(wd_hl), self.wd_hh_conv(wd_hh)],
                       dim=1))
-        x_1 = self.conv_x(x_idwt) + self.conv_v(v_idwt)
+        # Project pan path to ms channel space before adding to ms attention path
+        x_1 = self.conv_x(self.pan_path_proj(x_idwt)) + self.conv_v(v_idwt)
         x = self.resblock_1(x_1)
         return x
 
@@ -318,13 +332,15 @@ class F_MWiT(nn.Module):
     def __init__(self, pan_channel, L_up_channel, head_channel, dropout):
         super(F_MWiT, self).__init__()
         self.s_mwit = S_MWiT(pan_ll_channel=pan_channel, L_up_channel=L_up_channel, head_channel=head_channel, dropout=dropout)
+        # pan (pan_channel) and lms (L_up_channel) may differ; project pan before combine
+        self.pan_to_ms = nn.Conv2d(pan_channel, L_up_channel, 1, bias=False)
         self.combine = combine(channel=L_up_channel)
         self.mlp = FFN(in_channel=L_up_channel, FFN_channel=L_up_channel // 2, out_channel=L_up_channel)
         self.resblock = resblock(channel=L_up_channel)
 
     def forward(self, pan, L_up, back_img, lms):
         x = self.s_mwit(pan_ll=pan, L_up=L_up, back_img=back_img)
-        x = self.combine(x1=pan, x2=lms, x3=self.mlp(x))
+        x = self.combine(x1=self.pan_to_ms(pan), x2=lms, x3=self.mlp(x))
         x = self.resblock(x)
         return x
 
@@ -334,6 +350,9 @@ class L_MWiT(nn.Module):
         super(L_MWiT, self).__init__()
         self.pan_ll_channel = pan_ll_channel
         self.WD = DWT_2D()
+        # Same projections as S_MWiT — see comments there
+        self.pan_to_ms = nn.Conv2d(pan_ll_channel, L_up_channel, 1, bias=False)
+        self.pan_path_proj = nn.Conv2d(pan_ll_channel, L_up_channel, 1, bias=False)
         self.v_ll_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
         self.v_lh_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
         self.v_hl_attn = Attention(channel=L_up_channel, head_channel=head_channel, dropout=dropout)
@@ -356,19 +375,27 @@ class L_MWiT(nn.Module):
                                                  [self.pan_ll_channel, self.pan_ll_channel, self.pan_ll_channel,
                                                   self.pan_ll_channel], dim=1)
 
-        pre_v = self.combine(x1=wd_ll, x2=L_up, x3=self.mlp(back_img))
+        # Project pan subbands → ms channel space for combine and attention
+        wd_ll_ms = self.pan_to_ms(wd_ll)
+        wd_lh_ms = self.pan_to_ms(wd_lh)
+        wd_hl_ms = self.pan_to_ms(wd_hl)
+        wd_hh_ms = self.pan_to_ms(wd_hh)
+
+        pre_v = self.combine(x1=wd_ll_ms, x2=L_up, x3=self.mlp(back_img))
         v = self.resblock(pre_v)
 
-        v_ll = self.v_ll_attn(q=wd_ll, k=wd_ll, v=v)
-        v_lh = self.v_lh_attn(q=wd_lh, k=wd_ll, v=v)
-        v_hl = self.v_hl_attn(q=wd_hl, k=wd_ll, v=v)
-        v_hh = self.v_hh_attn(q=wd_hh, k=wd_ll, v=v)
+        v_ll = self.v_ll_attn(q=wd_ll_ms, k=wd_ll_ms, v=v)
+        v_lh = self.v_lh_attn(q=wd_lh_ms, k=wd_ll_ms, v=v)
+        v_hl = self.v_hl_attn(q=wd_hl_ms, k=wd_ll_ms, v=v)
+        v_hh = self.v_hh_attn(q=wd_hh_ms, k=wd_ll_ms, v=v)
         v_idwt = self.conv_idwt_up(torch.cat([v_ll, v_lh, v_hl, v_hh], dim=1))
 
+        # DWC path keeps original pan-channel tensors (conv_idwt_pan is pan-sized)
         x_idwt = self.conv_idwt_pan(
             torch.cat([self.wd_ll_conv(wd_ll), self.wd_lh_conv(wd_lh), self.wd_hl_conv(wd_hl), self.wd_hh_conv(wd_hh)],
                       dim=1))
-        x_1 = self.conv_x(x_idwt) + self.conv_v(v_idwt)
+        # Project pan path to ms channel space before adding to ms attention path
+        x_1 = self.conv_x(self.pan_path_proj(x_idwt)) + self.conv_v(v_idwt)
         x = self.resblock_1(x_1)
         return x
 
