@@ -1,6 +1,10 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
+
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
+os.makedirs(RESULTS_DIR, exist_ok=True)
 
 def parallel_plot(results):
     # results is a numpy array (res.F); columns are objective indices
@@ -15,6 +19,7 @@ def parallel_plot(results):
     parallel_coordinates(df, "index")
     plt.title("Pareto Front – Parallel Coordinates")
     plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, "parallel_plot.png"), dpi=150)
     plt.show()
 
 
@@ -26,6 +31,7 @@ def pareto_2d(results, obj1, obj2):
     plt.ylabel(f"Objective {obj2}")
     plt.title(f"Pareto Front (obj{obj1} vs obj{obj2})")
     plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_2d_obj{obj1}_obj{obj2}.png"), dpi=150)
     plt.show()
 
 
@@ -42,4 +48,5 @@ def pareto_3d(results, a, b, c):
     ax.set_zlabel(f"Objective {c}")
     plt.title(f"Pareto Front 3D (obj{a}, obj{b}, obj{c})")
     plt.tight_layout()
+    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_3d_obj{a}_obj{b}_obj{c}.png"), dpi=150)
     plt.show()
