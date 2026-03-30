@@ -1,0 +1,2061 @@
+
+[run_nsga2] Starting NSGA-2 optimisation
+  train: ../datav1/valid_wv3.h5
+  test:  ../datav1/test_wv3_OrigScale_multiExm1.h5
+  epochs=5  pop_size=10  n_gen=10
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=40 (raw=40)  ms_ch=60 (raw=61)  head_ch=5  dropout=0.285  lr=3.81e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 40, 'ms_target_channel': 60, 'head_channel': 5, 'dropout': 0.2851083396698007, 'lr': 0.0003806483068094369, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,674,978
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.047827
+  Epoch [2/5]  avg_loss=0.028019
+  Epoch [3/5]  avg_loss=0.022868
+  Epoch [4/5]  avg_loss=0.020625
+  Epoch [5/5]  avg_loss=0.018686
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1100  ERGAS=4.7473  CC=0.9624  SSIM=0.9410  SF=0.0908  SD=0.0037  n_params=1,674,978
+  -> objectives: SAM=0.1100  ERGAS=4.7473  CC=0.9624  SSIM=0.9410  n_params=1,674,978
+
+[Individual 2/10]
+  pan_ch=32 (raw=36)  ms_ch=48 (raw=55)  head_ch=8  dropout=0.169  lr=1.25e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 32, 'ms_target_channel': 48, 'head_channel': 8, 'dropout': 0.16938216942518725, 'lr': 0.00012480320191876154, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,082,550
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.059154
+  Epoch [2/5]  avg_loss=0.039680
+  Epoch [3/5]  avg_loss=0.033978
+  Epoch [4/5]  avg_loss=0.029425
+  Epoch [5/5]  avg_loss=0.026790
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1437  ERGAS=6.5925  CC=0.9249  SSIM=0.8510  SF=0.0896  SD=0.0076  n_params=1,082,550
+  -> objectives: SAM=0.1437  ERGAS=6.5925  CC=0.9249  SSIM=0.8510  n_params=1,082,550
+
+[Individual 3/10]
+  pan_ch=49 (raw=52)  ms_ch=35 (raw=41)  head_ch=7  dropout=0.239  lr=3.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 49, 'ms_target_channel': 35, 'head_channel': 7, 'dropout': 0.23864432399423724, 'lr': 0.00037287534636248047, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 688,510
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.046553
+  Epoch [2/5]  avg_loss=0.027962
+  Epoch [3/5]  avg_loss=0.023321
+  Epoch [4/5]  avg_loss=0.021303
+  Epoch [5/5]  avg_loss=0.019849
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1147  ERGAS=5.0884  CC=0.9569  SSIM=0.9350  SF=0.0894  SD=0.0068  n_params=688,510
+  -> objectives: SAM=0.1147  ERGAS=5.0884  CC=0.9569  SSIM=0.9350  n_params=688,510
+
+[Individual 4/10]
+  pan_ch=32 (raw=37)  ms_ch=16 (raw=22)  head_ch=8  dropout=0.069  lr=3.36e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 32, 'ms_target_channel': 16, 'head_channel': 8, 'dropout': 0.06900201979608338, 'lr': 0.00033608200639766454, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 187,734
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.054903
+  Epoch [2/5]  avg_loss=0.033955
+  Epoch [3/5]  avg_loss=0.027151
+  Epoch [4/5]  avg_loss=0.024365
+  Epoch [5/5]  avg_loss=0.022580
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1238  ERGAS=5.8935  CC=0.9425  SSIM=0.9134  SF=0.0877  SD=0.0070  n_params=187,734
+  -> objectives: SAM=0.1238  ERGAS=5.8935  CC=0.9425  SSIM=0.9134  n_params=187,734
+
+[Individual 5/10]
+  pan_ch=45 (raw=52)  ms_ch=27 (raw=29)  head_ch=9  dropout=0.294  lr=9.65e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 45, 'ms_target_channel': 27, 'head_channel': 9, 'dropout': 0.2944137879423592, 'lr': 0.0009654914742974081, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 450,858
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037906
+  Epoch [2/5]  avg_loss=0.022383
+  Epoch [3/5]  avg_loss=0.019401
+  Epoch [4/5]  avg_loss=0.017754
+  Epoch [5/5]  avg_loss=0.016562
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0999  ERGAS=4.2790  CC=0.9678  SSIM=0.9548  SF=0.0829  SD=0.0049  n_params=450,858
+  -> objectives: SAM=0.0999  ERGAS=4.2790  CC=0.9678  SSIM=0.9548  n_params=450,858
+
+[Individual 6/10]
+  pan_ch=49 (raw=50)  ms_ch=35 (raw=41)  head_ch=7  dropout=0.057  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 49, 'ms_target_channel': 35, 'head_channel': 7, 'dropout': 0.05658908254478679, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 688,510
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039395
+  Epoch [2/5]  avg_loss=0.022883
+  Epoch [3/5]  avg_loss=0.019571
+  Epoch [4/5]  avg_loss=0.017737
+  Epoch [5/5]  avg_loss=0.016427
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0989  ERGAS=4.2549  CC=0.9695  SSIM=0.9577  SF=0.0898  SD=0.0039  n_params=688,510
+  -> objectives: SAM=0.0989  ERGAS=4.2549  CC=0.9695  SSIM=0.9577  n_params=688,510
+
+[Individual 7/10]
+  pan_ch=33 (raw=40)  ms_ch=11 (raw=21)  head_ch=11  dropout=0.235  lr=6.52e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 33, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.2352381031592664, 'lr': 0.0006517029709477365, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,998
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.047467
+  Epoch [2/5]  avg_loss=0.027218
+  Epoch [3/5]  avg_loss=0.022465
+  Epoch [4/5]  avg_loss=0.020569
+  Epoch [5/5]  avg_loss=0.019315
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1104  ERGAS=5.0748  CC=0.9566  SSIM=0.9433  SF=0.0880  SD=0.0068  n_params=128,998
+  -> objectives: SAM=0.1104  ERGAS=5.0748  CC=0.9566  SSIM=0.9433  n_params=128,998
+
+[Individual 8/10]
+  pan_ch=60 (raw=60)  ms_ch=10 (raw=17)  head_ch=10  dropout=0.143  lr=1.56e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 60, 'ms_target_channel': 10, 'head_channel': 10, 'dropout': 0.14320740603676707, 'lr': 0.00015611462123488805, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 255,618
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.066327
+  Epoch [2/5]  avg_loss=0.042499
+  Epoch [3/5]  avg_loss=0.036354
+  Epoch [4/5]  avg_loss=0.030010
+  Epoch [5/5]  avg_loss=0.026664
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1506  ERGAS=6.6819  CC=0.9283  SSIM=0.8649  SF=0.0905  SD=0.0074  n_params=255,618
+  -> objectives: SAM=0.1506  ERGAS=6.6819  CC=0.9283  SSIM=0.8649  n_params=255,618
+
+[Individual 9/10]
+  pan_ch=44 (raw=46)  ms_ch=55 (raw=56)  head_ch=11  dropout=0.085  lr=8.56e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 44, 'ms_target_channel': 55, 'head_channel': 11, 'dropout': 0.08542825984379472, 'lr': 0.000855893368928268, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,441,980
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040880
+  Epoch [2/5]  avg_loss=0.023314
+  Epoch [3/5]  avg_loss=0.019160
+  Epoch [4/5]  avg_loss=0.017564
+  Epoch [5/5]  avg_loss=0.016103
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0969  ERGAS=4.2357  CC=0.9682  SSIM=0.9590  SF=0.0868  SD=0.0051  n_params=1,441,980
+  -> objectives: SAM=0.0969  ERGAS=4.2357  CC=0.9682  SSIM=0.9590  n_params=1,441,980
+
+[Individual 10/10]
+  pan_ch=39 (raw=40)  ms_ch=39 (raw=40)  head_ch=13  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.052897390377637396, 'lr': 0.0008376640472073493, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040702
+  Epoch [2/5]  avg_loss=0.023419
+  Epoch [3/5]  avg_loss=0.019964
+  Epoch [4/5]  avg_loss=0.018211
+  Epoch [5/5]  avg_loss=0.016744
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1002  ERGAS=4.4226  CC=0.9638  SSIM=0.9579  SF=0.0896  SD=0.0025  n_params=768,336
+  -> objectives: SAM=0.1002  ERGAS=4.4226  CC=0.9638  SSIM=0.9579  n_params=768,336
+==========================================================
+n_gen  |  n_eval  | n_nds  |      eps      |   indicator  
+==========================================================
+     1 |       10 |      7 |             - |             -
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=61)  head_ch=13  dropout=0.285  lr=8.42e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.2851083396698007, 'lr': 0.0008420869785377347, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039971
+  Epoch [2/5]  avg_loss=0.022582
+  Epoch [3/5]  avg_loss=0.018814
+  Epoch [4/5]  avg_loss=0.016631
+  Epoch [5/5]  avg_loss=0.015980
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0956  ERGAS=4.1968  CC=0.9682  SSIM=0.9610  SF=0.0850  SD=0.0048  n_params=1,283,841
+  -> objectives: SAM=0.0956  ERGAS=4.1968  CC=0.9682  SSIM=0.9610  n_params=1,283,841
+
+[Individual 2/10]
+  pan_ch=36 (raw=40)  ms_ch=27 (raw=29)  head_ch=9  dropout=0.294  lr=6.52e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 27, 'head_channel': 9, 'dropout': 0.29433635752661225, 'lr': 0.0006517029709477365, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 410,628
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042448
+  Epoch [2/5]  avg_loss=0.025268
+  Epoch [3/5]  avg_loss=0.021726
+  Epoch [4/5]  avg_loss=0.019937
+  Epoch [5/5]  avg_loss=0.018348
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1068  ERGAS=4.7381  CC=0.9612  SSIM=0.9461  SF=0.0851  SD=0.0057  n_params=410,628
+  -> objectives: SAM=0.1068  ERGAS=4.7381  CC=0.9612  SSIM=0.9461  n_params=410,628
+
+[Individual 3/10]
+  pan_ch=36 (raw=40)  ms_ch=36 (raw=40)  head_ch=12  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 36, 'head_channel': 12, 'dropout': 0.052897390377637396, 'lr': 0.0008376640472073493, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 660,658
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041272
+  Epoch [2/5]  avg_loss=0.023296
+  Epoch [3/5]  avg_loss=0.019891
+  Epoch [4/5]  avg_loss=0.018086
+  Epoch [5/5]  avg_loss=0.017108
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1020  ERGAS=4.5041  CC=0.9667  SSIM=0.9573  SF=0.0879  SD=0.0046  n_params=660,658
+  -> objectives: SAM=0.1020  ERGAS=4.5041  CC=0.9667  SSIM=0.9573  n_params=660,658
+
+[Individual 4/10]
+  pan_ch=50 (raw=52)  ms_ch=20 (raw=29)  head_ch=10  dropout=0.294  lr=9.60e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 50, 'ms_target_channel': 20, 'head_channel': 10, 'dropout': 0.2944137879423592, 'lr': 0.0009602987273113202, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 332,938
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042669
+  Epoch [2/5]  avg_loss=0.023311
+  Epoch [3/5]  avg_loss=0.020263
+  Epoch [4/5]  avg_loss=0.018518
+  Epoch [5/5]  avg_loss=0.017305
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1034  ERGAS=4.8221  CC=0.9615  SSIM=0.9548  SF=0.0858  SD=0.0051  n_params=332,938
+  -> objectives: SAM=0.1034  ERGAS=4.8221  CC=0.9615  SSIM=0.9548  n_params=332,938
+
+[Individual 5/10]
+  pan_ch=40 (raw=40)  ms_ch=40 (raw=40)  head_ch=5  dropout=0.053  lr=3.76e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 40, 'ms_target_channel': 40, 'head_channel': 5, 'dropout': 0.052897390377637396, 'lr': 0.0003762230784163293, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 809,998
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.047097
+  Epoch [2/5]  avg_loss=0.027596
+  Epoch [3/5]  avg_loss=0.023109
+  Epoch [4/5]  avg_loss=0.020860
+  Epoch [5/5]  avg_loss=0.019528
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1168  ERGAS=5.1146  CC=0.9573  SSIM=0.9329  SF=0.0879  SD=0.0061  n_params=809,998
+  -> objectives: SAM=0.1168  ERGAS=5.1146  CC=0.9573  SSIM=0.9329  n_params=809,998
+
+[Individual 6/10]
+  pan_ch=44 (raw=52)  ms_ch=11 (raw=21)  head_ch=11  dropout=0.235  lr=9.65e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 44, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.2350686169462149, 'lr': 0.0009654914742974081, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,956
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040486
+  Epoch [2/5]  avg_loss=0.023387
+  Epoch [3/5]  avg_loss=0.020344
+  Epoch [4/5]  avg_loss=0.018773
+  Epoch [5/5]  avg_loss=0.017860
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1053  ERGAS=4.6789  CC=0.9627  SSIM=0.9505  SF=0.0815  SD=0.0070  n_params=174,956
+  -> objectives: SAM=0.1053  ERGAS=4.6789  CC=0.9627  SSIM=0.9505  n_params=174,956
+
+[Individual 7/10]
+  pan_ch=32 (raw=36)  ms_ch=48 (raw=55)  head_ch=8  dropout=0.169  lr=1.12e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 32, 'ms_target_channel': 48, 'head_channel': 8, 'dropout': 0.16938216942518725, 'lr': 0.00011209801511302117, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,082,550
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.061316
+  Epoch [2/5]  avg_loss=0.040645
+  Epoch [3/5]  avg_loss=0.035179
+  Epoch [4/5]  avg_loss=0.031152
+  Epoch [5/5]  avg_loss=0.028017
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1526  ERGAS=6.9120  CC=0.9182  SSIM=0.8352  SF=0.0863  SD=0.0090  n_params=1,082,550
+  -> objectives: SAM=0.1526  ERGAS=6.9120  CC=0.9182  SSIM=0.8352  n_params=1,082,550
+
+[Individual 8/10]
+  pan_ch=32 (raw=33)  ms_ch=48 (raw=55)  head_ch=8  dropout=0.170  lr=1.06e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 32, 'ms_target_channel': 48, 'head_channel': 8, 'dropout': 0.16957143823219267, 'lr': 0.00010582330834669036, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,082,550
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.060169
+  Epoch [2/5]  avg_loss=0.040840
+  Epoch [3/5]  avg_loss=0.035110
+  Epoch [4/5]  avg_loss=0.030813
+  Epoch [5/5]  avg_loss=0.028123
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1494  ERGAS=6.9992  CC=0.9172  SSIM=0.8344  SF=0.0877  SD=0.0099  n_params=1,082,550
+  -> objectives: SAM=0.1494  ERGAS=6.9992  CC=0.9172  SSIM=0.8344  n_params=1,082,550
+
+[Individual 9/10]
+  pan_ch=35 (raw=40)  ms_ch=35 (raw=40)  head_ch=7  dropout=0.048  lr=9.46e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 35, 'ms_target_channel': 35, 'head_channel': 7, 'dropout': 0.0480246469049613, 'lr': 0.0009460272602440424, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 623,144
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037992
+  Epoch [2/5]  avg_loss=0.021978
+  Epoch [3/5]  avg_loss=0.018791
+  Epoch [4/5]  avg_loss=0.017043
+  Epoch [5/5]  avg_loss=0.016047
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0973  ERGAS=4.2887  CC=0.9695  SSIM=0.9583  SF=0.0876  SD=0.0048  n_params=623,144
+  -> objectives: SAM=0.0973  ERGAS=4.2887  CC=0.9695  SSIM=0.9583  n_params=623,144
+
+[Individual 10/10]
+  pan_ch=32 (raw=36)  ms_ch=16 (raw=22)  head_ch=8  dropout=0.069  lr=3.36e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 32, 'ms_target_channel': 16, 'head_channel': 8, 'dropout': 0.06881275801357961, 'lr': 0.00033608200639766454, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 187,734
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.054030
+  Epoch [2/5]  avg_loss=0.034894
+  Epoch [3/5]  avg_loss=0.026926
+  Epoch [4/5]  avg_loss=0.023963
+  Epoch [5/5]  avg_loss=0.022448
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1226  ERGAS=5.8160  CC=0.9434  SSIM=0.9150  SF=0.0876  SD=0.0069  n_params=187,734
+  -> objectives: SAM=0.1226  ERGAS=5.8160  CC=0.9434  SSIM=0.9150  n_params=187,734
+     2 |       20 |     10 |  0.0246425283 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=33 (raw=40)  ms_ch=33 (raw=41)  head_ch=11  dropout=0.235  lr=6.52e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 33, 'ms_target_channel': 33, 'head_channel': 11, 'dropout': 0.2352381031592664, 'lr': 0.0006517029709477365, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 556,326
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042560
+  Epoch [2/5]  avg_loss=0.024774
+  Epoch [3/5]  avg_loss=0.021156
+  Epoch [4/5]  avg_loss=0.018874
+  Epoch [5/5]  avg_loss=0.017386
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1027  ERGAS=4.4033  CC=0.9669  SSIM=0.9532  SF=0.0900  SD=0.0034  n_params=556,326
+  -> objectives: SAM=0.1027  ERGAS=4.4033  CC=0.9669  SSIM=0.9532  n_params=556,326
+
+[Individual 2/10]
+  pan_ch=54 (raw=60)  ms_ch=9 (raw=17)  head_ch=9  dropout=0.284  lr=1.55e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 9, 'head_channel': 9, 'dropout': 0.28386076556511797, 'lr': 0.00015521295333405038, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 209,136
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.060036
+  Epoch [2/5]  avg_loss=0.041753
+  Epoch [3/5]  avg_loss=0.033850
+  Epoch [4/5]  avg_loss=0.028692
+  Epoch [5/5]  avg_loss=0.025875
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1479  ERGAS=6.6203  CC=0.9334  SSIM=0.8690  SF=0.0936  SD=0.0057  n_params=209,136
+  -> objectives: SAM=0.1479  ERGAS=6.6203  CC=0.9334  SSIM=0.8690  n_params=209,136
+
+[Individual 3/10]
+  pan_ch=48 (raw=56)  ms_ch=12 (raw=21)  head_ch=12  dropout=0.237  lr=9.65e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 48, 'ms_target_channel': 12, 'head_channel': 12, 'dropout': 0.23661653950625455, 'lr': 0.0009654914742974081, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 206,338
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041147
+  Epoch [2/5]  avg_loss=0.024027
+  Epoch [3/5]  avg_loss=0.020811
+  Epoch [4/5]  avg_loss=0.019230
+  Epoch [5/5]  avg_loss=0.018598
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1069  ERGAS=4.7845  CC=0.9611  SSIM=0.9480  SF=0.0829  SD=0.0068  n_params=206,338
+  -> objectives: SAM=0.1069  ERGAS=4.7845  CC=0.9611  SSIM=0.9480  n_params=206,338
+
+[Individual 4/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=61)  head_ch=13  dropout=0.285  lr=9.56e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.2851083396698007, 'lr': 0.0009562330340668963, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042365
+  Epoch [2/5]  avg_loss=0.023634
+  Epoch [3/5]  avg_loss=0.019412
+  Epoch [4/5]  avg_loss=0.017373
+  Epoch [5/5]  avg_loss=0.016408
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0965  ERGAS=4.2060  CC=0.9705  SSIM=0.9608  SF=0.0888  SD=0.0034  n_params=1,283,841
+  -> objectives: SAM=0.0965  ERGAS=4.2060  CC=0.9705  SSIM=0.9608  n_params=1,283,841
+
+[Individual 5/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=20)  head_ch=13  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.052897390377637396, 'lr': 0.0008376640472073493, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041658
+  Epoch [2/5]  avg_loss=0.024009
+  Epoch [3/5]  avg_loss=0.020742
+  Epoch [4/5]  avg_loss=0.019324
+  Epoch [5/5]  avg_loss=0.018283
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1082  ERGAS=5.0467  CC=0.9575  SSIM=0.9495  SF=0.0905  SD=0.0046  n_params=174,444
+  -> objectives: SAM=0.1082  ERGAS=5.0467  CC=0.9575  SSIM=0.9495  n_params=174,444
+
+[Individual 6/10]
+  pan_ch=36 (raw=40)  ms_ch=60 (raw=61)  head_ch=6  dropout=0.144  lr=3.82e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 60, 'head_channel': 6, 'dropout': 0.1443503385496075, 'lr': 0.0003815568502032005, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,657,498
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.048657
+  Epoch [2/5]  avg_loss=0.028212
+  Epoch [3/5]  avg_loss=0.023115
+  Epoch [4/5]  avg_loss=0.020758
+  Epoch [5/5]  avg_loss=0.019188
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1109  ERGAS=4.8619  CC=0.9602  SSIM=0.9397  SF=0.0890  SD=0.0045  n_params=1,657,498
+  -> objectives: SAM=0.1109  ERGAS=4.8619  CC=0.9602  SSIM=0.9397  n_params=1,657,498
+
+[Individual 7/10]
+  pan_ch=49 (raw=50)  ms_ch=35 (raw=41)  head_ch=7  dropout=0.055  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 49, 'ms_target_channel': 35, 'head_channel': 7, 'dropout': 0.05504600749770873, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 688,510
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.036936
+  Epoch [2/5]  avg_loss=0.021909
+  Epoch [3/5]  avg_loss=0.018937
+  Epoch [4/5]  avg_loss=0.017013
+  Epoch [5/5]  avg_loss=0.015619
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0970  ERGAS=4.0942  CC=0.9714  SSIM=0.9630  SF=0.0923  SD=0.0026  n_params=688,510
+  -> objectives: SAM=0.0970  ERGAS=4.0942  CC=0.9714  SSIM=0.9630  n_params=688,510
+
+[Individual 8/10]
+  pan_ch=39 (raw=40)  ms_ch=39 (raw=40)  head_ch=13  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.052897390377637396, 'lr': 0.0008379282431395378, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.038934
+  Epoch [2/5]  avg_loss=0.022918
+  Epoch [3/5]  avg_loss=0.019649
+  Epoch [4/5]  avg_loss=0.017677
+  Epoch [5/5]  avg_loss=0.016324
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0950  ERGAS=4.1858  CC=0.9704  SSIM=0.9582  SF=0.0858  SD=0.0037  n_params=768,336
+  -> objectives: SAM=0.0950  ERGAS=4.1858  CC=0.9704  SSIM=0.9582  n_params=768,336
+
+[Individual 9/10]
+  pan_ch=60 (raw=60)  ms_ch=40 (raw=40)  head_ch=10  dropout=0.143  lr=1.91e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 60, 'ms_target_channel': 40, 'head_channel': 10, 'dropout': 0.14320740603676707, 'lr': 0.0001912400099629322, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 920,838
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.053871
+  Epoch [2/5]  avg_loss=0.034041
+  Epoch [3/5]  avg_loss=0.027765
+  Epoch [4/5]  avg_loss=0.025044
+  Epoch [5/5]  avg_loss=0.023477
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1306  ERGAS=6.0047  CC=0.9408  SSIM=0.8958  SF=0.0906  SD=0.0062  n_params=920,838
+  -> objectives: SAM=0.1306  ERGAS=6.0047  CC=0.9408  SSIM=0.8958  n_params=920,838
+
+[Individual 10/10]
+  pan_ch=36 (raw=40)  ms_ch=12 (raw=17)  head_ch=12  dropout=0.053  lr=8.03e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 12, 'head_channel': 12, 'dropout': 0.052897390377637396, 'lr': 0.0008033731387097467, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 151,690
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.044114
+  Epoch [2/5]  avg_loss=0.024784
+  Epoch [3/5]  avg_loss=0.021284
+  Epoch [4/5]  avg_loss=0.019561
+  Epoch [5/5]  avg_loss=0.018530
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1084  ERGAS=4.9447  CC=0.9604  SSIM=0.9469  SF=0.0872  SD=0.0045  n_params=151,690
+  -> objectives: SAM=0.1084  ERGAS=4.9447  CC=0.9604  SSIM=0.9469  n_params=151,690
+     3 |       30 |     10 |  0.2337595072 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=54 (raw=60)  ms_ch=9 (raw=17)  head_ch=9  dropout=0.284  lr=1.55e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 9, 'head_channel': 9, 'dropout': 0.28386076556511797, 'lr': 0.00015521295333405038, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 209,136
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.063497
+  Epoch [2/5]  avg_loss=0.042385
+  Epoch [3/5]  avg_loss=0.034829
+  Epoch [4/5]  avg_loss=0.029531
+  Epoch [5/5]  avg_loss=0.026818
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1508  ERGAS=6.6342  CC=0.9276  SSIM=0.8510  SF=0.0932  SD=0.0066  n_params=209,136
+  -> objectives: SAM=0.1508  ERGAS=6.6342  CC=0.9276  SSIM=0.8510  n_params=209,136
+
+[Individual 2/10]
+  pan_ch=52 (raw=52)  ms_ch=13 (raw=21)  head_ch=13  dropout=0.235  lr=9.65e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 52, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.2350686169462149, 'lr': 0.0009654914742974081, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 238,534
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.038729
+  Epoch [2/5]  avg_loss=0.022691
+  Epoch [3/5]  avg_loss=0.020121
+  Epoch [4/5]  avg_loss=0.018625
+  Epoch [5/5]  avg_loss=0.017685
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1090  ERGAS=5.1432  CC=0.9575  SSIM=0.9522  SF=0.0875  SD=0.0054  n_params=238,534
+  -> objectives: SAM=0.1090  ERGAS=5.1432  CC=0.9575  SSIM=0.9522  n_params=238,534
+
+[Individual 3/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=61)  head_ch=13  dropout=0.042  lr=9.53e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.04208159540889067, 'lr': 0.0009530616376566199, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040704
+  Epoch [2/5]  avg_loss=0.022944
+  Epoch [3/5]  avg_loss=0.019273
+  Epoch [4/5]  avg_loss=0.017191
+  Epoch [5/5]  avg_loss=0.015980
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0971  ERGAS=4.4339  CC=0.9679  SSIM=0.9607  SF=0.0879  SD=0.0037  n_params=1,283,841
+  -> objectives: SAM=0.0971  ERGAS=4.4339  CC=0.9679  SSIM=0.9607  n_params=1,283,841
+
+[Individual 4/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=61)  head_ch=13  dropout=0.286  lr=6.53e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.2857895892157385, 'lr': 0.0006533173322440803, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041032
+  Epoch [2/5]  avg_loss=0.023365
+  Epoch [3/5]  avg_loss=0.019532
+  Epoch [4/5]  avg_loss=0.017629
+  Epoch [5/5]  avg_loss=0.016670
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0990  ERGAS=4.6183  CC=0.9654  SSIM=0.9558  SF=0.0861  SD=0.0046  n_params=1,283,841
+  -> objectives: SAM=0.0990  ERGAS=4.6183  CC=0.9654  SSIM=0.9558  n_params=1,283,841
+
+[Individual 5/10]
+  pan_ch=26 (raw=37)  ms_ch=39 (raw=40)  head_ch=13  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.052897390377637396, 'lr': 0.0008376640472073493, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 720,470
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041339
+  Epoch [2/5]  avg_loss=0.023612
+  Epoch [3/5]  avg_loss=0.019931
+  Epoch [4/5]  avg_loss=0.017792
+  Epoch [5/5]  avg_loss=0.016464
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1019  ERGAS=4.4511  CC=0.9670  SSIM=0.9542  SF=0.0820  SD=0.0060  n_params=720,470
+  -> objectives: SAM=0.1019  ERGAS=4.4511  CC=0.9670  SSIM=0.9542  n_params=720,470
+
+[Individual 6/10]
+  pan_ch=33 (raw=40)  ms_ch=33 (raw=40)  head_ch=11  dropout=0.053  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 33, 'ms_target_channel': 33, 'head_channel': 11, 'dropout': 0.052897390377637396, 'lr': 0.0008379282431395378, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 556,326
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040714
+  Epoch [2/5]  avg_loss=0.023457
+  Epoch [3/5]  avg_loss=0.019865
+  Epoch [4/5]  avg_loss=0.018423
+  Epoch [5/5]  avg_loss=0.016953
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0992  ERGAS=4.3547  CC=0.9666  SSIM=0.9534  SF=0.0826  SD=0.0047  n_params=556,326
+  -> objectives: SAM=0.0992  ERGAS=4.3547  CC=0.9666  SSIM=0.9534  n_params=556,326
+
+[Individual 7/10]
+  pan_ch=39 (raw=40)  ms_ch=39 (raw=40)  head_ch=13  dropout=0.293  lr=8.45e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.29270546230527944, 'lr': 0.0008445795757637235, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039363
+  Epoch [2/5]  avg_loss=0.022850
+  Epoch [3/5]  avg_loss=0.019103
+  Epoch [4/5]  avg_loss=0.016959
+  Epoch [5/5]  avg_loss=0.016387
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0960  ERGAS=4.3977  CC=0.9687  SSIM=0.9544  SF=0.0845  SD=0.0056  n_params=768,336
+  -> objectives: SAM=0.0960  ERGAS=4.3977  CC=0.9687  SSIM=0.9544  n_params=768,336
+
+[Individual 8/10]
+  pan_ch=33 (raw=40)  ms_ch=11 (raw=19)  head_ch=11  dropout=0.252  lr=9.43e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 33, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.2524880801684451, 'lr': 0.0009432645207841122, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,998
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040948
+  Epoch [2/5]  avg_loss=0.023172
+  Epoch [3/5]  avg_loss=0.020232
+  Epoch [4/5]  avg_loss=0.018549
+  Epoch [5/5]  avg_loss=0.017651
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1035  ERGAS=4.7512  CC=0.9629  SSIM=0.9514  SF=0.0838  SD=0.0069  n_params=128,998
+  -> objectives: SAM=0.1035  ERGAS=4.7512  CC=0.9629  SSIM=0.9514  n_params=128,998
+
+[Individual 9/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=63)  head_ch=13  dropout=0.056  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.05561896926803031, 'lr': 0.0008379621854331722, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040524
+  Epoch [2/5]  avg_loss=0.023220
+  Epoch [3/5]  avg_loss=0.019619
+  Epoch [4/5]  avg_loss=0.017600
+  Epoch [5/5]  avg_loss=0.016147
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0976  ERGAS=4.3017  CC=0.9696  SSIM=0.9586  SF=0.0906  SD=0.0039  n_params=1,283,841
+  -> objectives: SAM=0.0976  ERGAS=4.3017  CC=0.9696  SSIM=0.9586  n_params=1,283,841
+
+[Individual 10/10]
+  pan_ch=39 (raw=40)  ms_ch=39 (raw=41)  head_ch=13  dropout=0.285  lr=8.42e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.2851083396698007, 'lr': 0.0008420530362441002, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.043261
+  Epoch [2/5]  avg_loss=0.024408
+  Epoch [3/5]  avg_loss=0.020744
+  Epoch [4/5]  avg_loss=0.018780
+  Epoch [5/5]  avg_loss=0.017343
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1021  ERGAS=4.3882  CC=0.9671  SSIM=0.9535  SF=0.0860  SD=0.0047  n_params=768,336
+  -> objectives: SAM=0.1021  ERGAS=4.3882  CC=0.9671  SSIM=0.9535  n_params=768,336
+     4 |       40 |     10 |  0.0241391132 |             f
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=56 (raw=60)  ms_ch=35 (raw=41)  head_ch=7  dropout=0.040  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 56, 'ms_target_channel': 35, 'head_channel': 7, 'dropout': 0.03996420994294275, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 728,984
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.038399
+  Epoch [2/5]  avg_loss=0.022447
+  Epoch [3/5]  avg_loss=0.019420
+  Epoch [4/5]  avg_loss=0.017552
+  Epoch [5/5]  avg_loss=0.016141
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0981  ERGAS=4.6201  CC=0.9661  SSIM=0.9591  SF=0.0893  SD=0.0041  n_params=728,984
+  -> objectives: SAM=0.0981  ERGAS=4.6201  CC=0.9661  SSIM=0.9591  n_params=728,984
+
+[Individual 2/10]
+  pan_ch=33 (raw=40)  ms_ch=11 (raw=21)  head_ch=11  dropout=0.235  lr=6.52e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 33, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.2352381031592664, 'lr': 0.0006517029709477365, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,998
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.044779
+  Epoch [2/5]  avg_loss=0.026556
+  Epoch [3/5]  avg_loss=0.022575
+  Epoch [4/5]  avg_loss=0.020855
+  Epoch [5/5]  avg_loss=0.019751
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1104  ERGAS=5.1592  CC=0.9551  SSIM=0.9445  SF=0.0883  SD=0.0071  n_params=128,998
+  -> objectives: SAM=0.1104  ERGAS=5.1592  CC=0.9551  SSIM=0.9445  n_params=128,998
+
+[Individual 3/10]
+  pan_ch=44 (raw=52)  ms_ch=11 (raw=21)  head_ch=11  dropout=0.235  lr=6.48e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 44, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.23507165519575082, 'lr': 0.0006481119814790952, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,956
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.046433
+  Epoch [2/5]  avg_loss=0.026904
+  Epoch [3/5]  avg_loss=0.022772
+  Epoch [4/5]  avg_loss=0.021067
+  Epoch [5/5]  avg_loss=0.019800
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1133  ERGAS=5.2090  CC=0.9550  SSIM=0.9395  SF=0.0893  SD=0.0062  n_params=174,956
+  -> objectives: SAM=0.1133  ERGAS=5.2090  CC=0.9550  SSIM=0.9395  n_params=174,956
+
+[Individual 4/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=62)  head_ch=13  dropout=0.069  lr=8.42e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.06940753201829974, 'lr': 0.0008420869785377347, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040888
+  Epoch [2/5]  avg_loss=0.022632
+  Epoch [3/5]  avg_loss=0.018916
+  Epoch [4/5]  avg_loss=0.017387
+  Epoch [5/5]  avg_loss=0.016461
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0968  ERGAS=4.2256  CC=0.9697  SSIM=0.9568  SF=0.0853  SD=0.0043  n_params=1,283,841
+  -> objectives: SAM=0.0968  ERGAS=4.2256  CC=0.9697  SSIM=0.9568  n_params=1,283,841
+
+[Individual 5/10]
+  pan_ch=45 (raw=50)  ms_ch=9 (raw=17)  head_ch=9  dropout=0.299  lr=1.55e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 45, 'ms_target_channel': 9, 'head_channel': 9, 'dropout': 0.2989843104523788, 'lr': 0.00015521295333405038, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 161,130
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.065870
+  Epoch [2/5]  avg_loss=0.042686
+  Epoch [3/5]  avg_loss=0.034944
+  Epoch [4/5]  avg_loss=0.029493
+  Epoch [5/5]  avg_loss=0.026607
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1535  ERGAS=6.7515  CC=0.9287  SSIM=0.8643  SF=0.0912  SD=0.0076  n_params=161,130
+  -> objectives: SAM=0.1535  ERGAS=6.7515  CC=0.9287  SSIM=0.8643  n_params=161,130
+
+[Individual 6/10]
+  pan_ch=48 (raw=50)  ms_ch=36 (raw=41)  head_ch=6  dropout=0.055  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 48, 'ms_target_channel': 36, 'head_channel': 6, 'dropout': 0.05504600749770873, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 716,746
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040140
+  Epoch [2/5]  avg_loss=0.022603
+  Epoch [3/5]  avg_loss=0.019599
+  Epoch [4/5]  avg_loss=0.017708
+  Epoch [5/5]  avg_loss=0.016131
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0968  ERGAS=4.1623  CC=0.9702  SSIM=0.9550  SF=0.0803  SD=0.0061  n_params=716,746
+  -> objectives: SAM=0.0968  ERGAS=4.1623  CC=0.9702  SSIM=0.9550  n_params=716,746
+
+[Individual 7/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=21)  head_ch=13  dropout=0.272  lr=9.69e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27179556056134724, 'lr': 0.0009687001274146134, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041044
+  Epoch [2/5]  avg_loss=0.022844
+  Epoch [3/5]  avg_loss=0.020126
+  Epoch [4/5]  avg_loss=0.018794
+  Epoch [5/5]  avg_loss=0.017912
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1059  ERGAS=4.8673  CC=0.9611  SSIM=0.9491  SF=0.0860  SD=0.0053  n_params=128,268
+  -> objectives: SAM=0.1059  ERGAS=4.8673  CC=0.9611  SSIM=0.9491  n_params=128,268
+
+[Individual 8/10]
+  pan_ch=39 (raw=40)  ms_ch=39 (raw=39)  head_ch=13  dropout=0.281  lr=8.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.280578864174692, 'lr': 0.0008379282431395378, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041721
+  Epoch [2/5]  avg_loss=0.023487
+  Epoch [3/5]  avg_loss=0.019589
+  Epoch [4/5]  avg_loss=0.017591
+  Epoch [5/5]  avg_loss=0.016394
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0986  ERGAS=4.2383  CC=0.9684  SSIM=0.9586  SF=0.0876  SD=0.0045  n_params=768,336
+  -> objectives: SAM=0.0986  ERGAS=4.2383  CC=0.9684  SSIM=0.9586  n_params=768,336
+
+[Individual 9/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=16)  head_ch=13  dropout=0.284  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.2839174178279568, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.065416
+  Epoch [2/5]  avg_loss=0.043370
+  Epoch [3/5]  avg_loss=0.037900
+  Epoch [4/5]  avg_loss=0.032500
+  Epoch [5/5]  avg_loss=0.028788
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1620  ERGAS=7.1721  CC=0.9183  SSIM=0.8292  SF=0.0936  SD=0.0080  n_params=174,444
+  -> objectives: SAM=0.1620  ERGAS=7.1721  CC=0.9183  SSIM=0.8292  n_params=174,444
+
+[Individual 10/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=61)  head_ch=9  dropout=0.285  lr=8.93e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.2850516874069618, 'lr': 0.0008928083183267345, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037879
+  Epoch [2/5]  avg_loss=0.021411
+  Epoch [3/5]  avg_loss=0.017975
+  Epoch [4/5]  avg_loss=0.016601
+  Epoch [5/5]  avg_loss=0.015332
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0939  ERGAS=4.0154  CC=0.9729  SSIM=0.9622  SF=0.0892  SD=0.0034  n_params=1,454,026
+  -> objectives: SAM=0.0939  ERGAS=4.0154  CC=0.9729  SSIM=0.9622  n_params=1,454,026
+     5 |       50 |     10 |  0.0265634742 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=28 (raw=40)  ms_ch=14 (raw=16)  head_ch=14  dropout=0.284  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 28, 'ms_target_channel': 14, 'head_channel': 14, 'dropout': 0.2839174178279568, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 147,438
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.069405
+  Epoch [2/5]  avg_loss=0.043902
+  Epoch [3/5]  avg_loss=0.037561
+  Epoch [4/5]  avg_loss=0.032414
+  Epoch [5/5]  avg_loss=0.029161
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1611  ERGAS=7.1117  CC=0.9170  SSIM=0.8302  SF=0.0945  SD=0.0063  n_params=147,438
+  -> objectives: SAM=0.1611  ERGAS=7.1117  CC=0.9170  SSIM=0.8302  n_params=147,438
+
+[Individual 2/10]
+  pan_ch=54 (raw=60)  ms_ch=9 (raw=17)  head_ch=9  dropout=0.278  lr=1.66e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 9, 'head_channel': 9, 'dropout': 0.27760940055901334, 'lr': 0.00016575737876741098, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 209,136
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.061112
+  Epoch [2/5]  avg_loss=0.042342
+  Epoch [3/5]  avg_loss=0.035594
+  Epoch [4/5]  avg_loss=0.030160
+  Epoch [5/5]  avg_loss=0.026994
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1458  ERGAS=6.6856  CC=0.9251  SSIM=0.8570  SF=0.0891  SD=0.0068  n_params=209,136
+  -> objectives: SAM=0.1458  ERGAS=6.6856  CC=0.9251  SSIM=0.8570  n_params=209,136
+
+[Individual 3/10]
+  pan_ch=26 (raw=37)  ms_ch=39 (raw=44)  head_ch=13  dropout=0.053  lr=8.36e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.05335845591703203, 'lr': 0.0008364480266713247, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 720,470
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.043065
+  Epoch [2/5]  avg_loss=0.024215
+  Epoch [3/5]  avg_loss=0.020239
+  Epoch [4/5]  avg_loss=0.018329
+  Epoch [5/5]  avg_loss=0.016925
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1001  ERGAS=4.5514  CC=0.9665  SSIM=0.9557  SF=0.0867  SD=0.0049  n_params=720,470
+  -> objectives: SAM=0.1001  ERGAS=4.5514  CC=0.9665  SSIM=0.9557  n_params=720,470
+
+[Individual 4/10]
+  pan_ch=35 (raw=39)  ms_ch=40 (raw=40)  head_ch=5  dropout=0.284  lr=9.75e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 35, 'ms_target_channel': 40, 'head_channel': 5, 'dropout': 0.2840755340977293, 'lr': 0.0009748940706086017, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 788,913
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040013
+  Epoch [2/5]  avg_loss=0.022523
+  Epoch [3/5]  avg_loss=0.018978
+  Epoch [4/5]  avg_loss=0.017365
+  Epoch [5/5]  avg_loss=0.016307
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0971  ERGAS=4.1947  CC=0.9702  SSIM=0.9581  SF=0.0869  SD=0.0044  n_params=788,913
+  -> objectives: SAM=0.0971  ERGAS=4.1947  CC=0.9702  SSIM=0.9581  n_params=788,913
+
+[Individual 5/10]
+  pan_ch=26 (raw=37)  ms_ch=52 (raw=59)  head_ch=13  dropout=0.276  lr=8.96e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27564538782303866, 'lr': 0.0008959352612454307, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,235,130
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039464
+  Epoch [2/5]  avg_loss=0.022972
+  Epoch [3/5]  avg_loss=0.018536
+  Epoch [4/5]  avg_loss=0.016874
+  Epoch [5/5]  avg_loss=0.015872
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0935  ERGAS=4.1439  CC=0.9707  SSIM=0.9610  SF=0.0866  SD=0.0033  n_params=1,235,130
+  -> objectives: SAM=0.0935  ERGAS=4.1439  CC=0.9707  SSIM=0.9610  n_params=1,235,130
+
+[Individual 6/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=62)  head_ch=9  dropout=0.284  lr=8.83e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.28386076556511797, 'lr': 0.0008833104210331207, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039875
+  Epoch [2/5]  avg_loss=0.022591
+  Epoch [3/5]  avg_loss=0.018894
+  Epoch [4/5]  avg_loss=0.016965
+  Epoch [5/5]  avg_loss=0.016068
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0957  ERGAS=4.0831  CC=0.9710  SSIM=0.9598  SF=0.0890  SD=0.0026  n_params=1,454,026
+  -> objectives: SAM=0.0957  ERGAS=4.0831  CC=0.9710  SSIM=0.9598  n_params=1,454,026
+
+[Individual 7/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=17)  head_ch=13  dropout=0.271  lr=9.70e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27126423065661, 'lr': 0.0009699093605862914, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040739
+  Epoch [2/5]  avg_loss=0.023629
+  Epoch [3/5]  avg_loss=0.020477
+  Epoch [4/5]  avg_loss=0.018847
+  Epoch [5/5]  avg_loss=0.017690
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1060  ERGAS=4.6149  CC=0.9645  SSIM=0.9549  SF=0.0883  SD=0.0044  n_params=174,444
+  -> objectives: SAM=0.1060  ERGAS=4.6149  CC=0.9645  SSIM=0.9549  n_params=174,444
+
+[Individual 8/10]
+  pan_ch=39 (raw=50)  ms_ch=13 (raw=17)  head_ch=13  dropout=0.054  lr=1.19e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.05440476561567148, 'lr': 0.00011882313496002541, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.062313
+  Epoch [2/5]  avg_loss=0.041422
+  Epoch [3/5]  avg_loss=0.034021
+  Epoch [4/5]  avg_loss=0.029547
+  Epoch [5/5]  avg_loss=0.026902
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1520  ERGAS=6.7173  CC=0.9267  SSIM=0.8604  SF=0.0933  SD=0.0064  n_params=174,444
+  -> objectives: SAM=0.1520  ERGAS=6.7173  CC=0.9267  SSIM=0.8604  n_params=174,444
+
+[Individual 9/10]
+  pan_ch=54 (raw=60)  ms_ch=18 (raw=23)  head_ch=9  dropout=0.285  lr=9.66e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 18, 'head_channel': 9, 'dropout': 0.2850516874069618, 'lr': 0.0009655731125479666, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 321,430
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040810
+  Epoch [2/5]  avg_loss=0.023351
+  Epoch [3/5]  avg_loss=0.020361
+  Epoch [4/5]  avg_loss=0.018818
+  Epoch [5/5]  avg_loss=0.017530
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1028  ERGAS=4.5477  CC=0.9639  SSIM=0.9540  SF=0.0895  SD=0.0038  n_params=321,430
+  -> objectives: SAM=0.1028  ERGAS=4.5477  CC=0.9639  SSIM=0.9540  n_params=321,430
+
+[Individual 10/10]
+  pan_ch=36 (raw=37)  ms_ch=18 (raw=21)  head_ch=9  dropout=0.298  lr=1.68e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 18, 'head_channel': 9, 'dropout': 0.2984237384255599, 'lr': 0.00016785163261040704, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 233,194
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.063835
+  Epoch [2/5]  avg_loss=0.039912
+  Epoch [3/5]  avg_loss=0.032096
+  Epoch [4/5]  avg_loss=0.027579
+  Epoch [5/5]  avg_loss=0.025015
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1397  ERGAS=6.3151  CC=0.9345  SSIM=0.8805  SF=0.0891  SD=0.0078  n_params=233,194
+  -> objectives: SAM=0.1397  ERGAS=6.3151  CC=0.9345  SSIM=0.8805  n_params=233,194
+     6 |       60 |     10 |  0.0584174681 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=52 (raw=59)  ms_ch=52 (raw=62)  head_ch=13  dropout=0.276  lr=8.96e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 52, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27564538782303866, 'lr': 0.0008963161622602514, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,350,466
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040429
+  Epoch [2/5]  avg_loss=0.022801
+  Epoch [3/5]  avg_loss=0.019120
+  Epoch [4/5]  avg_loss=0.017073
+  Epoch [5/5]  avg_loss=0.015983
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0966  ERGAS=4.2495  CC=0.9699  SSIM=0.9597  SF=0.0874  SD=0.0043  n_params=1,350,466
+  -> objectives: SAM=0.0966  ERGAS=4.2495  CC=0.9699  SSIM=0.9597  n_params=1,350,466
+
+[Individual 2/10]
+  pan_ch=48 (raw=50)  ms_ch=36 (raw=41)  head_ch=6  dropout=0.053  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 48, 'ms_target_channel': 36, 'head_channel': 6, 'dropout': 0.05337486848120629, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 716,746
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037669
+  Epoch [2/5]  avg_loss=0.021987
+  Epoch [3/5]  avg_loss=0.018540
+  Epoch [4/5]  avg_loss=0.017099
+  Epoch [5/5]  avg_loss=0.016195
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0960  ERGAS=4.1581  CC=0.9706  SSIM=0.9616  SF=0.0918  SD=0.0029  n_params=716,746
+  -> objectives: SAM=0.0960  ERGAS=4.1581  CC=0.9706  SSIM=0.9616  n_params=716,746
+
+[Individual 3/10]
+  pan_ch=56 (raw=60)  ms_ch=56 (raw=61)  head_ch=7  dropout=0.279  lr=9.67e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 56, 'ms_target_channel': 56, 'head_channel': 7, 'dropout': 0.2791313140757967, 'lr': 0.000966730977177793, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,561,438
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040166
+  Epoch [2/5]  avg_loss=0.022758
+  Epoch [3/5]  avg_loss=0.019148
+  Epoch [4/5]  avg_loss=0.017324
+  Epoch [5/5]  avg_loss=0.016317
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1029  ERGAS=4.4538  CC=0.9666  SSIM=0.9573  SF=0.0894  SD=0.0017  n_params=1,561,438
+  -> objectives: SAM=0.1029  ERGAS=4.4538  CC=0.9666  SSIM=0.9573  n_params=1,561,438
+
+[Individual 4/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=62)  head_ch=9  dropout=0.283  lr=8.83e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.28302742133276443, 'lr': 0.0008833104210331207, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040059
+  Epoch [2/5]  avg_loss=0.022404
+  Epoch [3/5]  avg_loss=0.018715
+  Epoch [4/5]  avg_loss=0.016608
+  Epoch [5/5]  avg_loss=0.015976
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0956  ERGAS=4.2947  CC=0.9699  SSIM=0.9553  SF=0.0846  SD=0.0038  n_params=1,454,026
+  -> objectives: SAM=0.0956  ERGAS=4.2947  CC=0.9699  SSIM=0.9553  n_params=1,454,026
+
+[Individual 5/10]
+  pan_ch=36 (raw=40)  ms_ch=12 (raw=16)  head_ch=6  dropout=0.066  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 12, 'head_channel': 6, 'dropout': 0.06584196941030103, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 151,690
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.068998
+  Epoch [2/5]  avg_loss=0.043944
+  Epoch [3/5]  avg_loss=0.038260
+  Epoch [4/5]  avg_loss=0.033042
+  Epoch [5/5]  avg_loss=0.029171
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1614  ERGAS=7.1505  CC=0.9144  SSIM=0.8319  SF=0.0903  SD=0.0074  n_params=151,690
+  -> objectives: SAM=0.1614  ERGAS=7.1505  CC=0.9144  SSIM=0.8319  n_params=151,690
+
+[Individual 6/10]
+  pan_ch=36 (raw=38)  ms_ch=54 (raw=59)  head_ch=9  dropout=0.284  lr=8.83e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.28386076556511797, 'lr': 0.0008829295200183, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,362,550
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040570
+  Epoch [2/5]  avg_loss=0.022994
+  Epoch [3/5]  avg_loss=0.019628
+  Epoch [4/5]  avg_loss=0.017413
+  Epoch [5/5]  avg_loss=0.016165
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0968  ERGAS=4.1567  CC=0.9705  SSIM=0.9577  SF=0.0883  SD=0.0045  n_params=1,362,550
+  -> objectives: SAM=0.0968  ERGAS=4.1567  CC=0.9705  SSIM=0.9577  n_params=1,362,550
+
+[Individual 7/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=21)  head_ch=13  dropout=0.273  lr=9.69e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.2733559186804565, 'lr': 0.0009687001274146134, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042359
+  Epoch [2/5]  avg_loss=0.023818
+  Epoch [3/5]  avg_loss=0.020650
+  Epoch [4/5]  avg_loss=0.019081
+  Epoch [5/5]  avg_loss=0.018400
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1054  ERGAS=4.8148  CC=0.9603  SSIM=0.9503  SF=0.0843  SD=0.0063  n_params=128,268
+  -> objectives: SAM=0.1054  ERGAS=4.8148  CC=0.9603  SSIM=0.9503  n_params=128,268
+
+[Individual 8/10]
+  pan_ch=45 (raw=50)  ms_ch=36 (raw=41)  head_ch=9  dropout=0.065  lr=8.99e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 45, 'ms_target_channel': 36, 'head_channel': 9, 'dropout': 0.06487962674502447, 'lr': 0.0008990099390520013, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 701,293
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042039
+  Epoch [2/5]  avg_loss=0.023563
+  Epoch [3/5]  avg_loss=0.020044
+  Epoch [4/5]  avg_loss=0.017856
+  Epoch [5/5]  avg_loss=0.016793
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0994  ERGAS=4.4352  CC=0.9671  SSIM=0.9571  SF=0.0894  SD=0.0029  n_params=701,293
+  -> objectives: SAM=0.0994  ERGAS=4.4352  CC=0.9671  SSIM=0.9571  n_params=701,293
+
+[Individual 9/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=21)  head_ch=13  dropout=0.273  lr=9.69e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27262890479355417, 'lr': 0.0009687001274146134, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041617
+  Epoch [2/5]  avg_loss=0.023343
+  Epoch [3/5]  avg_loss=0.020394
+  Epoch [4/5]  avg_loss=0.019092
+  Epoch [5/5]  avg_loss=0.017958
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1050  ERGAS=4.8469  CC=0.9617  SSIM=0.9528  SF=0.0865  SD=0.0052  n_params=128,268
+  -> objectives: SAM=0.1050  ERGAS=4.8469  CC=0.9617  SSIM=0.9528  n_params=128,268
+
+[Individual 10/10]
+  pan_ch=39 (raw=50)  ms_ch=39 (raw=41)  head_ch=13  dropout=0.284  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.28426485535195367, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037357
+  Epoch [2/5]  avg_loss=0.021868
+  Epoch [3/5]  avg_loss=0.018373
+  Epoch [4/5]  avg_loss=0.016835
+  Epoch [5/5]  avg_loss=0.016024
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0946  ERGAS=4.1513  CC=0.9708  SSIM=0.9560  SF=0.0814  SD=0.0067  n_params=768,336
+  -> objectives: SAM=0.0946  ERGAS=4.1513  CC=0.9708  SSIM=0.9560  n_params=768,336
+     7 |       70 |     10 |  0.1364491348 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=26 (raw=37)  ms_ch=52 (raw=60)  head_ch=13  dropout=0.276  lr=9.48e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27564538782303866, 'lr': 0.0009480927950921627, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,235,130
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.037712
+  Epoch [2/5]  avg_loss=0.021843
+  Epoch [3/5]  avg_loss=0.018537
+  Epoch [4/5]  avg_loss=0.016813
+  Epoch [5/5]  avg_loss=0.015871
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0928  ERGAS=4.0301  CC=0.9725  SSIM=0.9617  SF=0.0862  SD=0.0033  n_params=1,235,130
+  -> objectives: SAM=0.0928  ERGAS=4.0301  CC=0.9725  SSIM=0.9617  n_params=1,235,130
+
+[Individual 2/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=16)  head_ch=13  dropout=0.279  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.2789806505999386, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.074241
+  Epoch [2/5]  avg_loss=0.045120
+  Epoch [3/5]  avg_loss=0.038560
+  Epoch [4/5]  avg_loss=0.033200
+  Epoch [5/5]  avg_loss=0.029327
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1668  ERGAS=7.1517  CC=0.9178  SSIM=0.8218  SF=0.0933  SD=0.0073  n_params=174,444
+  -> objectives: SAM=0.1668  ERGAS=7.1517  CC=0.9178  SSIM=0.8218  n_params=174,444
+
+[Individual 3/10]
+  pan_ch=28 (raw=40)  ms_ch=14 (raw=16)  head_ch=14  dropout=0.284  lr=9.44e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 28, 'ms_target_channel': 14, 'head_channel': 14, 'dropout': 0.28427261761850126, 'lr': 0.0009442480988260892, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 147,438
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039635
+  Epoch [2/5]  avg_loss=0.022679
+  Epoch [3/5]  avg_loss=0.019978
+  Epoch [4/5]  avg_loss=0.018709
+  Epoch [5/5]  avg_loss=0.017670
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1089  ERGAS=5.1004  CC=0.9572  SSIM=0.9516  SF=0.0889  SD=0.0070  n_params=147,438
+  -> objectives: SAM=0.1089  ERGAS=5.1004  CC=0.9572  SSIM=0.9516  n_params=147,438
+
+[Individual 4/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=16)  head_ch=13  dropout=0.284  lr=8.63e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.28390760130867887, 'lr': 0.000862649152899663, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.043142
+  Epoch [2/5]  avg_loss=0.023992
+  Epoch [3/5]  avg_loss=0.020765
+  Epoch [4/5]  avg_loss=0.019484
+  Epoch [5/5]  avg_loss=0.018687
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1078  ERGAS=4.8669  CC=0.9601  SSIM=0.9515  SF=0.0877  SD=0.0044  n_params=174,444
+  -> objectives: SAM=0.1078  ERGAS=4.8669  CC=0.9601  SSIM=0.9515  n_params=174,444
+
+[Individual 5/10]
+  pan_ch=36 (raw=37)  ms_ch=12 (raw=16)  head_ch=6  dropout=0.066  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 12, 'head_channel': 6, 'dropout': 0.06584196941030103, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 151,690
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.060668
+  Epoch [2/5]  avg_loss=0.042043
+  Epoch [3/5]  avg_loss=0.035473
+  Epoch [4/5]  avg_loss=0.030042
+  Epoch [5/5]  avg_loss=0.027209
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1524  ERGAS=6.7392  CC=0.9252  SSIM=0.8464  SF=0.0928  SD=0.0068  n_params=151,690
+  -> objectives: SAM=0.1524  ERGAS=6.7392  CC=0.9252  SSIM=0.8464  n_params=151,690
+
+[Individual 6/10]
+  pan_ch=36 (raw=40)  ms_ch=12 (raw=16)  head_ch=6  dropout=0.066  lr=1.04e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 12, 'head_channel': 6, 'dropout': 0.06584196941030103, 'lr': 0.00010414868955036308, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 151,690
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.071319
+  Epoch [2/5]  avg_loss=0.046671
+  Epoch [3/5]  avg_loss=0.039793
+  Epoch [4/5]  avg_loss=0.034161
+  Epoch [5/5]  avg_loss=0.030289
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1725  ERGAS=7.3698  CC=0.9120  SSIM=0.8115  SF=0.0961  SD=0.0062  n_params=151,690
+  -> objectives: SAM=0.1725  ERGAS=7.3698  CC=0.9120  SSIM=0.8115  n_params=151,690
+
+[Individual 7/10]
+  pan_ch=56 (raw=59)  ms_ch=56 (raw=61)  head_ch=8  dropout=0.284  lr=8.46e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 56, 'ms_target_channel': 56, 'head_channel': 8, 'dropout': 0.28391867163207557, 'lr': 0.0008458041271294791, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,561,438
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.038670
+  Epoch [2/5]  avg_loss=0.022409
+  Epoch [3/5]  avg_loss=0.018849
+  Epoch [4/5]  avg_loss=0.016934
+  Epoch [5/5]  avg_loss=0.016158
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0955  ERGAS=4.0608  CC=0.9721  SSIM=0.9609  SF=0.0890  SD=0.0035  n_params=1,561,438
+  -> objectives: SAM=0.0955  ERGAS=4.0608  CC=0.9721  SSIM=0.9609  n_params=1,561,438
+
+[Individual 8/10]
+  pan_ch=39 (raw=50)  ms_ch=39 (raw=41)  head_ch=13  dropout=0.284  lr=1.15e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.2839096555614092, 'lr': 0.00011544122219391803, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.058047
+  Epoch [2/5]  avg_loss=0.039573
+  Epoch [3/5]  avg_loss=0.033482
+  Epoch [4/5]  avg_loss=0.029215
+  Epoch [5/5]  avg_loss=0.026708
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1475  ERGAS=6.6665  CC=0.9268  SSIM=0.8526  SF=0.0926  SD=0.0066  n_params=768,336
+  -> objectives: SAM=0.1475  ERGAS=6.6665  CC=0.9268  SSIM=0.8526  n_params=768,336
+
+[Individual 9/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=61)  head_ch=9  dropout=0.284  lr=1.54e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.2839743521738053, 'lr': 0.00015427428450214654, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.054541
+  Epoch [2/5]  avg_loss=0.035009
+  Epoch [3/5]  avg_loss=0.028512
+  Epoch [4/5]  avg_loss=0.025497
+  Epoch [5/5]  avg_loss=0.023904
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1341  ERGAS=6.0774  CC=0.9381  SSIM=0.8908  SF=0.0899  SD=0.0085  n_params=1,454,026
+  -> objectives: SAM=0.1341  ERGAS=6.0774  CC=0.9381  SSIM=0.8908  n_params=1,454,026
+
+[Individual 10/10]
+  pan_ch=39 (raw=40)  ms_ch=52 (raw=59)  head_ch=13  dropout=0.276  lr=8.96e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27564538782303866, 'lr': 0.0008959352612454307, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040104
+  Epoch [2/5]  avg_loss=0.022690
+  Epoch [3/5]  avg_loss=0.018889
+  Epoch [4/5]  avg_loss=0.017083
+  Epoch [5/5]  avg_loss=0.016238
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0964  ERGAS=4.1107  CC=0.9711  SSIM=0.9584  SF=0.0869  SD=0.0048  n_params=1,283,841
+  -> objectives: SAM=0.0964  ERGAS=4.1107  CC=0.9711  SSIM=0.9584  n_params=1,283,841
+     8 |       80 |     10 |  0.1095746982 |         ideal
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=52 (raw=52)  ms_ch=39 (raw=43)  head_ch=13  dropout=0.234  lr=6.48e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 52, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.23416233425085184, 'lr': 0.0006481119814790952, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 834,116
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.043698
+  Epoch [2/5]  avg_loss=0.024376
+  Epoch [3/5]  avg_loss=0.020881
+  Epoch [4/5]  avg_loss=0.018870
+  Epoch [5/5]  avg_loss=0.017499
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1041  ERGAS=4.4647  CC=0.9663  SSIM=0.9534  SF=0.0905  SD=0.0027  n_params=834,116
+  -> objectives: SAM=0.1041  ERGAS=4.4647  CC=0.9663  SSIM=0.9534  n_params=834,116
+
+[Individual 2/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=16)  head_ch=13  dropout=0.263  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.26279215741771034, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.067247
+  Epoch [2/5]  avg_loss=0.043935
+  Epoch [3/5]  avg_loss=0.038075
+  Epoch [4/5]  avg_loss=0.032822
+  Epoch [5/5]  avg_loss=0.029130
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1614  ERGAS=7.1565  CC=0.9180  SSIM=0.8292  SF=0.0916  SD=0.0076  n_params=174,444
+  -> objectives: SAM=0.1614  ERGAS=7.1565  CC=0.9180  SSIM=0.8292  n_params=174,444
+
+[Individual 3/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=19)  head_ch=13  dropout=0.274  lr=1.04e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27413361952049586, 'lr': 0.00010414868955036308, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.067133
+  Epoch [2/5]  avg_loss=0.045481
+  Epoch [3/5]  avg_loss=0.039290
+  Epoch [4/5]  avg_loss=0.033885
+  Epoch [5/5]  avg_loss=0.030165
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1677  ERGAS=7.2902  CC=0.9114  SSIM=0.8096  SF=0.0927  SD=0.0073  n_params=174,444
+  -> objectives: SAM=0.1677  ERGAS=7.2902  CC=0.9114  SSIM=0.8096  n_params=174,444
+
+[Individual 4/10]
+  pan_ch=30 (raw=35)  ms_ch=12 (raw=16)  head_ch=6  dropout=0.066  lr=1.38e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 30, 'ms_target_channel': 12, 'head_channel': 6, 'dropout': 0.06584196941030103, 'lr': 0.00013825979303960318, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 130,090
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.067601
+  Epoch [2/5]  avg_loss=0.043831
+  Epoch [3/5]  avg_loss=0.038085
+  Epoch [4/5]  avg_loss=0.032050
+  Epoch [5/5]  avg_loss=0.027810
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1550  ERGAS=7.0211  CC=0.9237  SSIM=0.8459  SF=0.0914  SD=0.0070  n_params=130,090
+  -> objectives: SAM=0.1550  ERGAS=7.0211  CC=0.9237  SSIM=0.8459  n_params=130,090
+
+[Individual 5/10]
+  pan_ch=26 (raw=37)  ms_ch=52 (raw=60)  head_ch=13  dropout=0.275  lr=9.47e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27471321983741076, 'lr': 0.0009468277457193105, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,235,130
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040723
+  Epoch [2/5]  avg_loss=0.022957
+  Epoch [3/5]  avg_loss=0.018739
+  Epoch [4/5]  avg_loss=0.016965
+  Epoch [5/5]  avg_loss=0.015477
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0942  ERGAS=4.0600  CC=0.9713  SSIM=0.9613  SF=0.0853  SD=0.0058  n_params=1,235,130
+  -> objectives: SAM=0.0942  ERGAS=4.0600  CC=0.9713  SSIM=0.9613  n_params=1,235,130
+
+[Individual 6/10]
+  pan_ch=44 (raw=50)  ms_ch=11 (raw=20)  head_ch=11  dropout=0.285  lr=9.73e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 44, 'ms_target_channel': 11, 'head_channel': 11, 'dropout': 0.285173424983827, 'lr': 0.0009729328718945193, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,956
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.043195
+  Epoch [2/5]  avg_loss=0.024037
+  Epoch [3/5]  avg_loss=0.020614
+  Epoch [4/5]  avg_loss=0.018949
+  Epoch [5/5]  avg_loss=0.018089
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1059  ERGAS=4.7943  CC=0.9611  SSIM=0.9536  SF=0.0886  SD=0.0052  n_params=174,956
+  -> objectives: SAM=0.1059  ERGAS=4.7943  CC=0.9611  SSIM=0.9536  n_params=174,956
+
+[Individual 7/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=22)  head_ch=13  dropout=0.284  lr=9.69e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.28366534579395547, 'lr': 0.0009687001274146134, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042169
+  Epoch [2/5]  avg_loss=0.023773
+  Epoch [3/5]  avg_loss=0.020701
+  Epoch [4/5]  avg_loss=0.019227
+  Epoch [5/5]  avg_loss=0.018374
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1053  ERGAS=4.7244  CC=0.9625  SSIM=0.9517  SF=0.0893  SD=0.0034  n_params=128,268
+  -> objectives: SAM=0.1053  ERGAS=4.7244  CC=0.9625  SSIM=0.9517  n_params=128,268
+
+[Individual 8/10]
+  pan_ch=30 (raw=35)  ms_ch=12 (raw=16)  head_ch=6  dropout=0.075  lr=1.18e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 30, 'ms_target_channel': 12, 'head_channel': 6, 'dropout': 0.0752762183966888, 'lr': 0.00011829525913789076, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 130,090
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.067404
+  Epoch [2/5]  avg_loss=0.044028
+  Epoch [3/5]  avg_loss=0.039052
+  Epoch [4/5]  avg_loss=0.034071
+  Epoch [5/5]  avg_loss=0.030020
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1639  ERGAS=7.3277  CC=0.9112  SSIM=0.8221  SF=0.0927  SD=0.0063  n_params=130,090
+  -> objectives: SAM=0.1639  ERGAS=7.3277  CC=0.9112  SSIM=0.8221  n_params=130,090
+
+[Individual 9/10]
+  pan_ch=39 (raw=50)  ms_ch=39 (raw=41)  head_ch=13  dropout=0.284  lr=9.48e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.28426485535195367, 'lr': 0.0009476831574422484, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039672
+  Epoch [2/5]  avg_loss=0.022825
+  Epoch [3/5]  avg_loss=0.019596
+  Epoch [4/5]  avg_loss=0.017816
+  Epoch [5/5]  avg_loss=0.016387
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0966  ERGAS=4.1073  CC=0.9709  SSIM=0.9607  SF=0.0886  SD=0.0036  n_params=768,336
+  -> objectives: SAM=0.0966  ERGAS=4.1073  CC=0.9709  SSIM=0.9607  n_params=768,336
+
+[Individual 10/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=61)  head_ch=9  dropout=0.286  lr=9.05e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.2859838553918736, 'lr': 0.0009051615772051266, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039283
+  Epoch [2/5]  avg_loss=0.022819
+  Epoch [3/5]  avg_loss=0.019271
+  Epoch [4/5]  avg_loss=0.016957
+  Epoch [5/5]  avg_loss=0.016044
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0969  ERGAS=4.1647  CC=0.9701  SSIM=0.9578  SF=0.0878  SD=0.0028  n_params=1,454,026
+  -> objectives: SAM=0.0969  ERGAS=4.1647  CC=0.9701  SSIM=0.9578  n_params=1,454,026
+     9 |       90 |     10 |  0.0129112651 |         nadir
+
+============================================================
+[NSGA-2] Evaluating 10 individual(s)
+============================================================
+
+[Individual 1/10]
+  pan_ch=36 (raw=37)  ms_ch=54 (raw=61)  head_ch=9  dropout=0.285  lr=8.95e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 36, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.28502423375263547, 'lr': 0.0008947007108024654, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,362,550
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.041292
+  Epoch [2/5]  avg_loss=0.023609
+  Epoch [3/5]  avg_loss=0.019390
+  Epoch [4/5]  avg_loss=0.017391
+  Epoch [5/5]  avg_loss=0.016223
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0979  ERGAS=4.2109  CC=0.9693  SSIM=0.9601  SF=0.0911  SD=0.0042  n_params=1,362,550
+  -> objectives: SAM=0.0979  ERGAS=4.2109  CC=0.9693  SSIM=0.9601  n_params=1,362,550
+
+[Individual 2/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=19)  head_ch=13  dropout=0.284  lr=9.69e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.28366534579395547, 'lr': 0.0009687001274146134, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.042382
+  Epoch [2/5]  avg_loss=0.024086
+  Epoch [3/5]  avg_loss=0.020951
+  Epoch [4/5]  avg_loss=0.019550
+  Epoch [5/5]  avg_loss=0.018816
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1073  ERGAS=4.9288  CC=0.9591  SSIM=0.9492  SF=0.0912  SD=0.0055  n_params=128,268
+  -> objectives: SAM=0.1073  ERGAS=4.9288  CC=0.9591  SSIM=0.9492  n_params=128,268
+
+[Individual 3/10]
+  pan_ch=39 (raw=50)  ms_ch=39 (raw=41)  head_ch=13  dropout=0.284  lr=1.61e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 39, 'head_channel': 13, 'dropout': 0.2839169925565378, 'lr': 0.00016066381432079912, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 768,336
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.057712
+  Epoch [2/5]  avg_loss=0.038721
+  Epoch [3/5]  avg_loss=0.031055
+  Epoch [4/5]  avg_loss=0.026570
+  Epoch [5/5]  avg_loss=0.024372
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1378  ERGAS=6.2620  CC=0.9365  SSIM=0.8865  SF=0.0905  SD=0.0084  n_params=768,336
+  -> objectives: SAM=0.1378  ERGAS=6.2620  CC=0.9365  SSIM=0.8865  n_params=768,336
+
+[Individual 4/10]
+  pan_ch=54 (raw=60)  ms_ch=54 (raw=61)  head_ch=9  dropout=0.268  lr=8.93e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 54, 'ms_target_channel': 54, 'head_channel': 9, 'dropout': 0.268340710337546, 'lr': 0.0008928083183267345, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,454,026
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.039141
+  Epoch [2/5]  avg_loss=0.022367
+  Epoch [3/5]  avg_loss=0.018833
+  Epoch [4/5]  avg_loss=0.017049
+  Epoch [5/5]  avg_loss=0.015654
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0954  ERGAS=4.0546  CC=0.9718  SSIM=0.9624  SF=0.0889  SD=0.0033  n_params=1,454,026
+  -> objectives: SAM=0.0954  ERGAS=4.0546  CC=0.9718  SSIM=0.9624  n_params=1,454,026
+
+[Individual 5/10]
+  pan_ch=52 (raw=60)  ms_ch=52 (raw=60)  head_ch=13  dropout=0.276  lr=9.48e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 52, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27567284147734805, 'lr': 0.0009480927950921627, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,350,466
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.038862
+  Epoch [2/5]  avg_loss=0.022386
+  Epoch [3/5]  avg_loss=0.019081
+  Epoch [4/5]  avg_loss=0.016903
+  Epoch [5/5]  avg_loss=0.016082
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.0959  ERGAS=4.0925  CC=0.9710  SSIM=0.9616  SF=0.0871  SD=0.0037  n_params=1,350,466
+  -> objectives: SAM=0.0959  ERGAS=4.0925  CC=0.9710  SSIM=0.9616  n_params=1,350,466
+
+[Individual 6/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=18)  head_ch=13  dropout=0.274  lr=1.04e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27413361952049586, 'lr': 0.00010414868955036308, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.073249
+  Epoch [2/5]  avg_loss=0.045230
+  Epoch [3/5]  avg_loss=0.040931
+  Epoch [4/5]  avg_loss=0.037344
+  Epoch [5/5]  avg_loss=0.033375
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1751  ERGAS=8.0668  CC=0.8931  SSIM=0.7628  SF=0.0890  SD=0.0079  n_params=174,444
+  -> objectives: SAM=0.1751  ERGAS=8.0668  CC=0.8931  SSIM=0.7628  n_params=174,444
+
+[Individual 7/10]
+  pan_ch=39 (raw=40)  ms_ch=13 (raw=22)  head_ch=13  dropout=0.274  lr=1.04e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.27413361952049586, 'lr': 0.00010414868955036308, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.068267
+  Epoch [2/5]  avg_loss=0.044669
+  Epoch [3/5]  avg_loss=0.040045
+  Epoch [4/5]  avg_loss=0.035776
+  Epoch [5/5]  avg_loss=0.031958
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1669  ERGAS=7.7725  CC=0.9001  SSIM=0.7862  SF=0.0899  SD=0.0080  n_params=174,444
+  -> objectives: SAM=0.1669  ERGAS=7.7725  CC=0.9001  SSIM=0.7862  n_params=174,444
+
+[Individual 8/10]
+  pan_ch=39 (raw=41)  ms_ch=13 (raw=16)  head_ch=13  dropout=0.284  lr=9.46e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.28426528062337264, 'lr': 0.0009456795067480951, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 174,444
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.040981
+  Epoch [2/5]  avg_loss=0.023134
+  Epoch [3/5]  avg_loss=0.020159
+  Epoch [4/5]  avg_loss=0.018699
+  Epoch [5/5]  avg_loss=0.017718
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1044  ERGAS=4.5528  CC=0.9665  SSIM=0.9538  SF=0.0887  SD=0.0055  n_params=174,444
+  -> objectives: SAM=0.1044  ERGAS=4.5528  CC=0.9665  SSIM=0.9538  n_params=174,444
+
+[Individual 9/10]
+  pan_ch=26 (raw=37)  ms_ch=13 (raw=19)  head_ch=13  dropout=0.274  lr=9.25e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 26, 'ms_target_channel': 13, 'head_channel': 13, 'dropout': 0.274172321752136, 'lr': 0.0009253038393095425, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 128,268
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.045156
+  Epoch [2/5]  avg_loss=0.024918
+  Epoch [3/5]  avg_loss=0.020849
+  Epoch [4/5]  avg_loss=0.019161
+  Epoch [5/5]  avg_loss=0.018100
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1053  ERGAS=4.8143  CC=0.9613  SSIM=0.9494  SF=0.0844  SD=0.0060  n_params=128,268
+  -> objectives: SAM=0.1053  ERGAS=4.8143  CC=0.9613  SSIM=0.9494  n_params=128,268
+
+[Individual 10/10]
+  pan_ch=39 (raw=41)  ms_ch=52 (raw=62)  head_ch=13  dropout=0.276  lr=1.30e-04
+
+[train_and_evaluate] Params: {'pan_target_channel': 39, 'ms_target_channel': 52, 'head_channel': 13, 'dropout': 0.27560668559139845, 'lr': 0.00012978839864254382, 'epochs': 5}
+  Device: cuda
+  Loading data (train+val split from train_path)...
+  [load_dataset] ../datav1/valid_wv3.h5
+    pan: (1080, 1, 64, 64)  ms: (1080, 8, 16, 16)  lms: (1080, 8, 64, 64)  gt: (1080, 8, 64, 64)
+  Split: 864 train  /  216 val  (total 1080)
+  Model parameters: 1,283,841
+  Training: 5 epochs, 108 batches/epoch
+  Epoch [1/5]  avg_loss=0.058619
+  Epoch [2/5]  avg_loss=0.038733
+  Epoch [3/5]  avg_loss=0.031354
+  Epoch [4/5]  avg_loss=0.027044
+  Epoch [5/5]  avg_loss=0.024870
+  Evaluating on val split: 27 batches
+  Metrics: SAM=0.1384  ERGAS=6.2679  CC=0.9344  SSIM=0.8771  SF=0.0905  SD=0.0077  n_params=1,283,841
+  -> objectives: SAM=0.1384  ERGAS=6.2679  CC=0.9344  SSIM=0.8771  n_params=1,283,841
+    10 |      100 |     10 |  0.000000E+00 |             f
+
+[run_nsga2] Optimisation complete
+  Pareto front size: 10
