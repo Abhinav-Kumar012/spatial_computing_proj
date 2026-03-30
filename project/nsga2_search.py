@@ -2,13 +2,14 @@ from pymoo.core.problem import Problem
 from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.optimize import minimize
 import numpy as np
+from tqdm import tqdm
 
 from train_eval import train_and_evaluate
 
 
 class FusionOptimization(Problem):
 
-    def __init__(self, train_path, test_path, epochs=5):
+    def __init__(self, train_path, test_path, epochs=5, pop_size=10, n_gen=10):
 
         super().__init__(
             n_var=5,
@@ -20,14 +21,15 @@ class FusionOptimization(Problem):
         self.train_path = train_path
         self.test_path  = test_path
         self.epochs     = epochs
+        self.pbar       = tqdm(total=pop_size * n_gen, desc="Optimization Process", unit="model")
 
     def _evaluate(self, X, out, *args, **kwargs):
 
         results=[]
 
-        print(f"\n{'='*60}")
-        print(f"[NSGA-2] Evaluating {len(X)} individual(s)")
-        print(f"{'='*60}")
+        tqdm.write(f"\n{'='*60}")
+        tqdm.write(f"[NSGA-2] Evaluating {len(X)} individual(s)")
+        tqdm.write(f"{'='*60}")
 
         for i, x in enumerate(X):
 
@@ -52,8 +54,8 @@ class FusionOptimization(Problem):
                 "epochs":             self.epochs
             }
 
-            print(f"\n[Individual {i+1}/{len(X)}]")
-            print(f"  pan_ch={pan_target_channel} (raw={pan_raw})  "
+            tqdm.write(f"\n[Individual {i+1}/{len(X)}]")
+            tqdm.write(f"  pan_ch={pan_target_channel} (raw={pan_raw})  "
                   f"ms_ch={ms_target_channel} (raw={ms_raw})  "
                   f"head_ch={head_channel}  "
                   f"dropout={params['dropout']:.3f}  lr={params['lr']:.2e}")
@@ -70,9 +72,11 @@ class FusionOptimization(Problem):
                 metrics["n_params"],   # obj 6 — minimise (smaller model)
             ])
 
-            print(f"  -> objectives: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "
+            tqdm.write(f"  -> objectives: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "
                   f"CC={metrics['CC']:.4f}  SSIM={metrics['SSIM']:.4f}  "
                   f"n_params={metrics['n_params']:,}")
+            
+            self.pbar.update(1)
 
         out["F"]=np.array(results)
 
@@ -84,7 +88,7 @@ def run_nsga2(train_path, test_path, epochs=5, pop_size=10, n_gen=10):
     print(f"  test:  {test_path}")
     print(f"  epochs={epochs}  pop_size={pop_size}  n_gen={n_gen}")
 
-    problem  = FusionOptimization(train_path, test_path, epochs=epochs)
+    problem  = FusionOptimization(train_path, test_path, epochs=epochs, pop_size=pop_size, n_gen=n_gen)
 
     algorithm = NSGA2(pop_size=pop_size)
 
@@ -92,7 +96,9 @@ def run_nsga2(train_path, test_path, epochs=5, pop_size=10, n_gen=10):
                    algorithm,
                    ('n_gen', n_gen),
                    seed=1,
-                   verbose=True)
+                   verbose=False)
+                   
+    problem.pbar.close()
 
     print("\n[run_nsga2] Optimisation complete")
     print(f"  Pareto front size: {len(res.F)}")

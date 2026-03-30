@@ -7,8 +7,8 @@ test_path  = f"{data_folder}/test_wv3_OrigScale_multiExm1.h5"
 
 # ── NSGA-2 search budget ───────────────────────────────────────────────────────
 EPOCHS   = 5    # training epochs per candidate  (3–10 recommended)
-POP_SIZE = 10   # NSGA-2 population size         (10–20 recommended)
-N_GEN    = 10   # number of generations          (10–20 recommended)
+POP_SIZE = 25   # NSGA-2 population size         (Yields max 25 Pareto points)
+N_GEN    = 20   # number of generations          (Provides enough search diversity)
 # ──────────────────────────────────────────────────────────────────────────────
 
 res = run_nsga2(train_path, test_path, epochs=EPOCHS, pop_size=POP_SIZE, n_gen=N_GEN)
