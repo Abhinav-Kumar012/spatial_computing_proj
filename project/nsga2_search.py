@@ -1,10 +1,33 @@
 from pymoo.core.problem import Problem
 from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.optimize import minimize
+from pymoo.core.callback import Callback
 import numpy as np
 from tqdm import tqdm
+import dill
+import os
 
 from train_eval import train_and_evaluate
+
+class CheckpointCallback(Callback):
+    def __init__(self, filepath="nsga2_checkpoint.pkl"):
+        super().__init__()
+        self.filepath = filepath
+        self.tmp_filepath = filepath + ".tmp"
+
+    def notify(self, algorithm):
+        # Handle the tqdm pbar before pickling to avoid serialization errors
+        pbar = getattr(algorithm.problem, "pbar", None)
+        if pbar is not None:
+            algorithm.problem.pbar = None
+            
+        with open(self.tmp_filepath, "wb") as f:
+            dill.dump(algorithm, f)
+        os.replace(self.tmp_filepath, self.filepath)
+        
+        # Restore the pbar reference
+        if pbar is not None:
+            algorithm.problem.pbar = pbar
 
 
 class FusionOptimization(Problem):
@@ -21,7 +44,9 @@ class FusionOptimization(Problem):
         self.train_path = train_path
         self.test_path  = test_path
         self.epochs     = epochs
-        self.pbar       = tqdm(total=pop_size * n_gen, desc="Optimization Process", unit="model")
+        self.pop_size   = pop_size
+        self.n_gen      = n_gen
+        self.pbar       = tqdm(total=self.pop_size * self.n_gen, desc="Optimization Process", unit="model")
 
     def _evaluate(self, X, out, *args, **kwargs):
 
@@ -88,15 +113,28 @@ def run_nsga2(train_path, test_path, epochs=5, pop_size=10, n_gen=10):
     print(f"  test:  {test_path}")
     print(f"  epochs={epochs}  pop_size={pop_size}  n_gen={n_gen}")
 
-    problem  = FusionOptimization(train_path, test_path, epochs=epochs, pop_size=pop_size, n_gen=n_gen)
+    checkpoint_file = "nsga2_checkpoint.pkl"
 
-    algorithm = NSGA2(pop_size=pop_size)
+    if os.path.exists(checkpoint_file):
+        with open(checkpoint_file, "rb") as f:
+            algorithm = dill.load(f)
+            print(f"  -> Resuming from checkpoint: generation {algorithm.n_gen}")
+            
+        problem = algorithm.problem
+        # Calculate how many evaluations have occurred and resume the progress bar
+        evaluated = algorithm.n_gen * problem.pop_size
+        problem.pbar = tqdm(total=problem.pop_size * problem.n_gen, initial=evaluated, desc="Optimization Process (Resumed)", unit="model")
+    else:
+        problem  = FusionOptimization(train_path, test_path, epochs=epochs, pop_size=pop_size, n_gen=n_gen)
+        algorithm = NSGA2(pop_size=pop_size)
 
     res = minimize(problem,
                    algorithm,
                    ('n_gen', n_gen),
                    seed=1,
-                   verbose=False)
+                   verbose=False,
+                   copy_algorithm=False,
+                   callback=CheckpointCallback(checkpoint_file))
                    
     problem.pbar.close()
 
