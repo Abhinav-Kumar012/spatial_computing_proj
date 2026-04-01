@@ -1,0 +1,138 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Comprehensive Documentation: Pansharpening Image Fusion using Multi-Scale Wavelet Vision Transformers (HWViT) and NSGA-II}
+\author{Project Documentation}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This document outlines the entire architecture, pipeline, mathematical formulations, and optimization strategy for the Multispectral and Panchromatic Image Fusion (Pansharpening) project. The proposed model, named HWViT, integrates Discrete Wavelet Transforms (DWT) with attention mechanisms to effectively fuse high-spatial-resolution Panchromatic (PAN) images and high-spectral-resolution Multispectral (MS) images. Furthermore, the Non-dominated Sorting Genetic Algorithm II (NSGA-II) is employed to optimize hyperparameters for a multi-objective Pareto front.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction}
+Pansharpening is an image fusion technique that combines a high-resolution, single-band Panchromatic (PAN) image with a lower-resolution, multi-band Multispectral (MS) image. The goal is to generate an image that possesses both the high spatial resolution of the PAN image and the high spectral resolution of the MS image. This project implements a novel deep learning architecture based on Wavelet Vision Transformers and optimizes the architectural hyperparameters using a multi-objective genetic algorithm (NSGA-II).
+
+\section{Proposed Architecture: HWViT}
+The core architecture is the Hierarchical Wavelet Vision Transformer (HWViT). It operates on PAN, MS, and upsampled MS (LMS) images to fuse information progressively at both fine and large scales.
+
+\subsection{Overall Pipeline}
+The overall pipeline comprises the following steps:
+\begin{enumerate}
+    \item \textbf{Feature Extraction:} The PAN image undergoes channel projection using a continuous convolutional block (\texttt{raise\_channel}) to match \texttt{pan\_target\_channel}. The MS image is feature-extracted and upsampled via a PixelShuffle layer.
+    \item \textbf{Scale processing:}
+    \begin{itemize}
+        \item \textbf{L-MWiT Block (Large Scale):} Operates on downsampled PAN and LMS features to capture low-frequency structural components.
+        \item \textbf{F-MWiT Block (Fine Scale):} Takes the full-resolution projected PAN, partially downsampled LMS, and the output of the L-MWiT block to inject high-frequency details.
+    \end{itemize}
+    \item \textbf{Feature Reduction and Combination:} The fused output from the F-MWiT block is projected back to the original LMS channel dimension and added to the initial upsampled MS features using a residual connection.
+\end{enumerate}
+
+\subsection{Multi-Scale Wavelet Vision Transformer (MWiT)}
+The \texttt{S\_MWiT} (Sub-MWiT) module, utilized by both L-MWiT and F-MWiT, forms the foundation of the fusion process. Its operation is defined as follows:
+
+\subsubsection{Discrete Wavelet Transform (DWT)}
+The DWT isolates the image into approximation and detail subbands. Using fixed 2D Haar Wavelet filters, an input $x$ is decomposed into $LL$ (low-frequency), $LH$ (horizontal), $HL$ (vertical), and $HH$ (diagonal) components.
+The forward Haar DWT filters are defined mathematically as:
+\begin{align*}
+    w_{LL} &= \frac{1}{4} \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix}, \quad
+    w_{LH} = \frac{1}{4} \begin{bmatrix} 1 & 1 \\ -1 & -1 \end{bmatrix} \\
+    w_{HL} &= \frac{1}{4} \begin{bmatrix} 1 & -1 \\ 1 & -1 \end{bmatrix}, \quad
+    w_{HH} = \frac{1}{4} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}
+\end{align*}
+Using stride 2 convolutions, the spatial dimensions are halved while retaining all spatial and spectral semantics within the combined subbands. The inverse transform (IDWT) reconstructs the full-size images from these subbands using transposed convolutions.
+
+\subsubsection{Cross-Attention Mechanism}
+Once the PAN input is decomposed into DWT subbands $wd_{LL}, wd_{LH}, wd_{HL}, wd_{HH}$, they are mapped to the MS feature dimension ($L_{up}$). A combined latent representation $v$ is acquired by averaging the MS input, PAN features, and contextual background image information using learned parameters $\alpha, \beta$:
+\[ v = \text{ResBlock}(\alpha \cdot x_{\text{PAN}} + \beta \cdot x_{\text{MS}} + (1 - \alpha - \beta) \cdot \text{FFN}(x_{\text{background}})) \]
+
+The attention mechanism processes these representations. For each DWT component $i \in \{LL, LH, HL, HH\}$:
+\begin{align*}
+    Q_i &= \text{Linear\_Q}(\text{LayerNorm}(wd_{i,\text{MS}})) \\
+    K_i &= \text{Linear\_K}(\text{LayerNorm}(wd_{LL,\text{MS}})) \\
+    V   &= \text{Linear\_V}(\text{LayerNorm}(v)) \\
+    \text{Attn}_i &= \text{Softmax}\left(\frac{Q_i K_i^T}{\sqrt{d_k}}\right) V
+\end{align*}
+Here, the LL subband of the PAN image serves as the key ($K_i$) for all other subbands, ensuring structural consistency across frequency domains. The responses $\text{Attn}_i$ are later concatenated and reconstructed via IDWT.
+
+\subsection{Feed-Forward Network (FFN) and Resblocks}
+The architectural flow extensively leverages Resblocks and Feed-Forward Networks (\texttt{FFN} and \texttt{FFN\_2}).
+The regular \texttt{FFN} scales the channel dimensions down to a bottleneck ($C/2$) and back up to project features effectively. It involves:
+\[ x_{\text{mid}} = \text{PReLU}(\text{Conv}(x_{\text{in}})) \]
+\[ x_{\text{out}} = \text{Linear}_2(\text{Conv}_{1 \times 1}(x_{\text{mid}}) + x_{\text{in}}) \]
+
+\section{Training Pipeline}
+\subsection{Dataset Configuration}
+The models are trained using HDF5 datasets containing:
+\begin{itemize}
+    \item \texttt{pan}: Panchromatic image inputs.
+    \item \texttt{ms}: Low-resolution Multispectral inputs.
+    \item \texttt{lms}: Upsampled Multispectral baseline.
+    \item \texttt{gt}: Ground Truth image arrays.
+\end{itemize}
+An 80/20 train-validation split is enforced dynamically on dimensions of $64 \times 64$ patches. Mini-batching is employed (batch size 8). The input intensities form tensors in the continuous range following radiometric normalization controlled by `ratio` (e.g., 2047).
+
+\subsection{Loss Function}
+The training algorithm updates gradients purely based on \textbf{L1 Loss (Mean Absolute Error)}:
+\[ \mathcal{L} = \frac{1}{N} \sum_{i=1}^N \left| \hat{y}_i - y_i \right| \]
+The optimizer used is Adam, evaluated iteratively over the specified number of epochs.
+
+\section{NSGA-II Multi-Objective Optimization}
+Deep learning architectures for pansharpening trade off varying perceptual metrics at the cost of computational complexity. To automate this design search, the Non-dominated Sorting Genetic Algorithm II (NSGA-II) isolates the optimal Pareto Front.
+
+\subsection{Hyperparameter Search Space}
+The variables defining an individual in the Genetic Algorithm population are:
+\begin{enumerate}
+    \item \texttt{pan\_raw}: Approximate channel dimension for PAN tracking $\in [16, 64]$.
+    \item \texttt{ms\_raw}: Approximate channel dimension for MS tracking $\in [16, 64]$.
+    \item \texttt{head\_channel}: Dimensions utilized per Attention head $\in [4, 16]$.
+    \item \texttt{dropout}: Probability of dropout in network $\in [0.01, 0.3]$.
+    \item \texttt{lr}: Adam learning rate $\in [10^{-4}, 10^{-3}]$.
+\end{enumerate}
+Note: \texttt{pan\_target\_channel} and \texttt{ms\_target\_channel} are rounded to the nearest integer multiple of \texttt{head\_channel} to ensure equal dimension slicing during attention computation.
+
+\subsection{Target Objectives (Fitness Constraints)}
+NSGA-II minimizes an array of 7 mathematical objectives. Signs are flipped internally in code where a metric traditionally requires maximization.
+
+\subsubsection{1. Spectral Angle Mapper (SAM) - Minimize}
+Computes the spectral deviation angle between the ground truth ($y$) and predicted ($\hat{y}$) image.
+\[ \text{SAM} = \arccos\left( \frac{\sum \hat{y} \cdot y}{\|\hat{y}\|_2 \|y\|_2 + \epsilon} \right) \]
+
+\subsubsection{2. Erreur Relative Globale Adimensionnelle de Synth\`ese (ERGAS) - Minimize}
+Tracks quantitative global error per spectral channel scaled by spatial resolution.
+\[ \text{ERGAS} = \frac{100}{r} \sqrt{ \frac{1}{C} \sum_{i=1}^C \left( \frac{\text{RMSE}_i}{\overline{y}_i} \right)^2 } \]
+where $r = 4$ is the resolution ratio, and $\overline{y}_i$ is the mean of the $i$-th band.
+
+\subsubsection{3. Correlation Coefficient (CC) - Maximize}
+Indicates the linear spectral phase dependency.
+\[ \text{CC} = \frac{\text{Cov}(\hat{y}, y)}{\sigma_{\hat{y}} \sigma_y} \]
+
+\subsubsection{4. Standard Deviation Difference (SD) - Minimize}
+Evaluates variation disparity representing noise distribution differences.
+\[ \text{SD} = \left| \sigma_{\hat{y}} - \sigma_y \right| \]
+
+\subsubsection{5. Spatial Frequency (SF) - Maximize}
+Quantifies the overall active spatial frequency map reflecting image sharpness.
+\[ \text{SF} = \sqrt{ (\text{Row Frequency})^2 + (\text{Column Frequency})^2 } \]
+where frequencies correlate to root-mean-square differences between adjacent pixels over rows and cols respectively.
+
+\subsubsection{6. Structural Similarity Index (SSIM) - Maximize}
+Verifies perceptual structural similarities over sliding windows.
+\[ \text{SSIM} = \frac{(2 \mu_{\hat{y}} \mu_y + c_1)(2 \sigma_{\hat{y}y} + c_2)}{(\mu_{\hat{y}}^2 + \mu_y^2 + c_1)(\sigma_{\hat{y}}^2 + \sigma_y^2 + c_2)} \]
+
+\subsubsection{7. Network Parameters (\texttt{n\_params}) - Minimize}
+Sums total trainable parameter count in the HWViT instantiation. Ensures efficiency for downstream inference without exorbitant deployment cost.
+
+\section{Conclusion}
+The integration of a hierarchical multi-scale DWT approach alongside self-attention offers precise pansharpening capabilities while minimizing spectral distortion. By wrapping the network layout in the NSGA-II solver, users can derive lightweight models, highly structurally-accurate networks, or heavily balanced optimal designs by visualizing the resultant 7D Pareto Front.
+
+\end{document}
