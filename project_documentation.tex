@@ -86,6 +86,325 @@ The training algorithm updates gradients purely based on \textbf{L1 Loss (Mean A
 \[ \mathcal{L} = \frac{1}{N} \sum_{i=1}^N \left| \hat{y}_i - y_i \right| \]
 The optimizer used is Adam, evaluated iteratively over the specified number of epochs.
 
+\section{Non-Dominated Sorting Genetic Algorithm II (NSGA-II)}
+
+NSGA-II (Non-Dominated Sorting Genetic Algorithm II) is one of the most widely used multi-objective evolutionary algorithms for solving optimization problems involving two or more conflicting objectives. It was proposed by \textit{Deb et al.} in 2002 as an improvement over the original NSGA algorithm.
+
+The main goal of NSGA-II is to obtain a set of Pareto-optimal solutions that represent the trade-offs among conflicting objectives.
+
+Suppose a multi-objective optimization problem is written as:
+
+\begin{equation}
+\min \; F(x) = \left[f_1(x), f_2(x), \dots, f_M(x)\right]
+\end{equation}
+
+subject to:
+
+\begin{equation}
+g_j(x) \leq 0, \quad j = 1,2,\dots,J
+\end{equation}
+
+\begin{equation}
+h_k(x) = 0, \quad k = 1,2,\dots,K
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $x = [x_1, x_2, \dots, x_n]$ is the decision vector,
+    \item $f_i(x)$ are the objective functions,
+    \item $M$ is the number of objectives,
+    \item $g_j(x)$ are inequality constraints,
+    \item $h_k(x)$ are equality constraints.
+\end{itemize}
+
+\subsection{Pareto Dominance}
+
+NSGA-II is based on the concept of Pareto dominance.
+
+A solution $x^{(1)}$ is said to dominate another solution $x^{(2)}$ if:
+
+\begin{enumerate}
+    \item $x^{(1)}$ is no worse than $x^{(2)}$ in all objectives:
+    \begin{equation}
+    f_i(x^{(1)}) \leq f_i(x^{(2)}), \quad \forall i
+    \end{equation}
+
+    \item $x^{(1)}$ is strictly better than $x^{(2)}$ in at least one objective:
+    \begin{equation}
+    \exists i \text{ such that } f_i(x^{(1)}) < f_i(x^{(2)})
+    \end{equation}
+\end{enumerate}
+
+The set of solutions that are not dominated by any other solution is called the Pareto-optimal set.
+
+\subsection{Main Steps of NSGA-II}
+
+NSGA-II works iteratively through generations. At each generation, it performs the following major steps:
+
+\begin{enumerate}
+    \item Initialize a random population.
+    \item Evaluate objective functions.
+    \item Perform non-dominated sorting.
+    \item Compute crowding distance.
+    \item Use tournament selection.
+    \item Apply crossover and mutation.
+    \item Combine parent and offspring populations.
+    \item Select the next generation.
+\end{enumerate}
+
+\subsection{Population Initialization}
+
+Assume the population size is $N$. The initial population is:
+
+\begin{equation}
+P_0 = \{x_1, x_2, \dots, x_N\}
+\end{equation}
+
+Each solution is evaluated for all objective functions.
+
+\subsection{Fast Non-Dominated Sorting}
+
+The most important feature of NSGA-II is fast non-dominated sorting.
+
+For every solution $p$, define:
+
+\begin{itemize}
+    \item $S_p$: the set of solutions dominated by $p$
+    \item $n_p$: the number of solutions that dominate $p$
+\end{itemize}
+
+Initially:
+
+\begin{equation}
+n_p = 0
+\end{equation}
+
+For each pair of solutions $(p,q)$:
+
+\begin{itemize}
+    \item If $p$ dominates $q$, then add $q$ to $S_p$
+    \item If $q$ dominates $p$, then increment $n_p$
+\end{itemize}
+
+After checking all pairs:
+
+\begin{itemize}
+    \item All solutions with $n_p = 0$ belong to the first front $F_1$
+    \item Remove $F_1$ temporarily and repeat the process to obtain $F_2, F_3, \dots$
+\end{itemize}
+
+Thus:
+
+\begin{equation}
+F_1, F_2, F_3, \dots
+\end{equation}
+
+represent successive Pareto fronts.
+
+Solutions in lower front numbers are considered better.
+
+\subsection{Crowding Distance}
+
+Since many solutions may lie in the same Pareto front, NSGA-II uses crowding distance to maintain diversity.
+
+For each objective $m$, sort the solutions in a front according to objective value $f_m$.
+
+The crowding distance of the $i$-th solution is calculated as:
+
+\begin{equation}
+CD_i = \sum_{m=1}^{M} \frac{f_m^{i+1} - f_m^{i-1}}{f_m^{\max} - f_m^{\min}}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $f_m^{i+1}$ is the next objective value,
+    \item $f_m^{i-1}$ is the previous objective value,
+    \item $f_m^{\max}$ and $f_m^{\min}$ are the maximum and minimum values of objective $m$.
+\end{itemize}
+
+Boundary solutions are assigned infinite crowding distance:
+
+\begin{equation}
+CD = \infty
+\end{equation}
+
+A larger crowding distance means the solution lies in a less crowded region of the Pareto front.
+
+\subsection{Crowded Tournament Selection}
+
+NSGA-II uses binary tournament selection.
+
+Given two candidate solutions, preference is given according to:
+
+\begin{enumerate}
+    \item Lower rank (better Pareto front)
+    \item Higher crowding distance if ranks are equal
+\end{enumerate}
+
+Thus, for two solutions $p$ and $q$:
+
+\begin{equation}
+p \prec q
+\end{equation}
+
+if either:
+
+\begin{equation}
+\text{rank}(p) < \text{rank}(q)
+\end{equation}
+
+or:
+
+\begin{equation}
+\text{rank}(p) = \text{rank}(q) \quad \text{and} \quad CD_p > CD_q
+\end{equation}
+
+\subsection{Crossover and Mutation}
+
+After selection, offspring are generated using crossover and mutation.
+
+A common crossover operator in NSGA-II is Simulated Binary Crossover (SBX).
+
+For parent solutions $x_1$ and $x_2$, offspring are generated as:
+
+\begin{equation}
+\beta_q =
+\begin{cases}
+(2u)^{\frac{1}{\eta_c+1}}, & u \leq 0.5 \\
+\left(\frac{1}{2(1-u)}\right)^{\frac{1}{\eta_c+1}}, & u > 0.5
+\end{cases}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $u \in [0,1]$ is a random number,
+    \item $\eta_c$ is the crossover distribution index.
+\end{itemize}
+
+The offspring are:
+
+\begin{equation}
+child_1 = 0.5[(1+\beta_q)x_1 + (1-\beta_q)x_2]
+\end{equation}
+
+\begin{equation}
+child_2 = 0.5[(1-\beta_q)x_1 + (1+\beta_q)x_2]
+\end{equation}
+
+Polynomial mutation is also commonly used:
+
+\begin{equation}
+\delta_q =
+\begin{cases}
+(2r)^{\frac{1}{\eta_m+1}} - 1, & r < 0.5 \\
+1 - [2(1-r)]^{\frac{1}{\eta_m+1}}, & r \geq 0.5
+\end{cases}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $r \in [0,1]$ is a random number,
+    \item $\eta_m$ is the mutation distribution index.
+\end{itemize}
+
+The mutated variable becomes:
+
+\begin{equation}
+x' = x + \delta_q(x_{\max} - x_{\min})
+\end{equation}
+
+\subsection{Elitism in NSGA-II}
+
+NSGA-II uses elitism to preserve good solutions.
+
+Suppose:
+
+\begin{equation}
+|P_t| = N
+\end{equation}
+
+and offspring population is:
+
+\begin{equation}
+|Q_t| = N
+\end{equation}
+
+They are combined into:
+
+\begin{equation}
+R_t = P_t \cup Q_t
+\end{equation}
+
+Thus:
+
+\begin{equation}
+|R_t| = 2N
+\end{equation}
+
+The combined population is sorted into fronts:
+
+\begin{equation}
+F_1, F_2, F_3, \dots
+\end{equation}
+
+The next generation population $P_{t+1}$ is filled front by front until size $N$ is reached.
+
+If the last front cannot be completely included, solutions with the highest crowding distance are selected.
+
+\subsection{Computational Complexity}
+
+The computational complexity of NSGA-II is mainly due to non-dominated sorting.
+
+For a population of size $N$ and $M$ objectives, the complexity is:
+
+\begin{equation}
+O(MN^2)
+\end{equation}
+
+This is significantly better than the original NSGA algorithm.
+
+\subsection{Advantages of NSGA-II}
+
+\begin{itemize}
+    \item Efficient non-dominated sorting
+    \item Maintains diversity using crowding distance
+    \item Preserves elite solutions
+    \item Produces a well-distributed Pareto front
+    \item Widely used for engineering, image fusion, machine learning, and resource allocation problems
+\end{itemize}
+
+\subsection{NSGA-II for Image Fusion Parameter Optimization}
+
+In image fusion or pansharpening applications, NSGA-II can optimize parameters of a fusion method by simultaneously maximizing spectral quality and spatial quality.
+
+For example, objectives may include:
+
+\begin{equation}
+\max \; QNR
+\end{equation}
+
+\begin{equation}
+\min \; SAM
+\end{equation}
+
+\begin{equation}
+\min \; ERGAS
+\end{equation}
+
+\begin{equation}
+\max \; SCC
+\end{equation}
+
+where:
+\begin{itemize}
+    \item QNR = Quality with No Reference,
+    \item SAM = Spectral Angle Mapper,
+    \item ERGAS = Relative Global Dimensional Error,
+    \item SCC = Spatial Correlation Coefficient.
+\end{itemize}
+
+Thus, NSGA-II finds parameter sets that provide the best trade-off between preserving spectral information and enhancing spatial details.
+
 \section{NSGA-II Multi-Objective Optimization}
 Deep learning architectures for pansharpening trade off varying perceptual metrics at the cost of computational complexity. To automate this design search, the Non-dominated Sorting Genetic Algorithm II (NSGA-II) isolates the optimal Pareto Front.
 
