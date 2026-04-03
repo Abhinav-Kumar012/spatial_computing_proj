@@ -21,3 +21,7 @@ pareto_2d(results, 0, 1)
 pareto_2d(results, 0, 4)
 
 pareto_3d(results, 0, 1, 5)
+
+# New plots suggested for generating insights
+pareto_2d(results, 6, 5)    # n_params vs SSIM
+pareto_3d(results, 0, 4, 6) # SAM vs SF vs n_params
