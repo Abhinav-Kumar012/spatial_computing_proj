@@ -4,11 +4,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
 
+import dill
+import itertools
+
 # =============================================================================
 # Variables for Visualization Configuration
 # =============================================================================
-import dill
-
 # Pick which model results file to load (must be a .pkl containing Pareto data)
 MODEL_DATA_PATH = os.path.join(os.path.dirname(__file__), "results", "pareto_front.pkl")
 
@@ -40,16 +41,21 @@ def parallel_plot(results):
     arr = _to_display(results)
     df  = pd.DataFrame(arr, columns=OBJ_NAMES[: arr.shape[1]])
 
+    # Normalize each column individually to [0, 1] to create an appropriate uniform scale
+    for col in df.columns:
+        if df[col].max() != df[col].min():
+            df[col] = (df[col] - df[col].min()) / (df[col].max() - df[col].min())
+
     # parallel_coordinates needs a string class column — use the solution index
     df = df.reset_index()
     df["index"] = df["index"].astype(str)
 
     plt.figure(figsize=(12, 5))
-    parallel_coordinates(df, "index")
-    plt.title("Pareto Front – Parallel Coordinates")
+    parallel_coordinates(df, "index", colormap='viridis')
+    plt.title("Pareto Front – Parallel Coordinates (Normalized [0,1])")
     plt.tight_layout()
     plt.savefig(os.path.join(SAVE_DIR, "parallel_plot.png"), dpi=150)
-    plt.show()
+    plt.close()
 
 
 def pareto_2d(results, obj1, obj2):
@@ -64,7 +70,7 @@ def pareto_2d(results, obj1, obj2):
     plt.title(f"Pareto Front — {name1} vs {name2}")
     plt.tight_layout()
     plt.savefig(os.path.join(SAVE_DIR, f"pareto_2d_{name1}_vs_{name2}.png"), dpi=150)
-    plt.show()
+    plt.close()
 
 
 def pareto_3d(results, a, b, c):
@@ -82,7 +88,7 @@ def pareto_3d(results, a, b, c):
     plt.title(f"Pareto Front 3D — {na}, {nb}, {nc}")
     plt.tight_layout()
     plt.savefig(os.path.join(SAVE_DIR, f"pareto_3d_{na}_{nb}_{nc}.png"), dpi=150)
-    plt.show()
+    plt.close()
 
 if __name__ == "__main__":
     print(f"Loading Pareto results from: {MODEL_DATA_PATH}")
@@ -100,15 +106,20 @@ if __name__ == "__main__":
         else:
             raise ValueError("Could not find objective data ('raw_F' or 'F') in pickle file.")
             
-        print(f"Generating and saving plots to: {SAVE_DIR}\n")
-        
+        print(f"Generating and saving plots to: {SAVE_DIR}")
+        print("Creating PCP Plot...")
         parallel_plot(results)
         
-        pareto_2d(results, 0, 1)   # SAM vs ERGAS
-        pareto_2d(results, 0, 4)   # SAM vs SF
-        pareto_2d(results, 6, 5)   # n_params vs SSIM
+        n_objs = results.shape[1]
         
-        pareto_3d(results, 0, 1, 5) # SAM vs ERGAS vs SSIM
-        pareto_3d(results, 0, 4, 6) # SAM vs SF vs n_params
-        
-        print("Done!")
+        # All combinations of 2 objectives
+        print("Generating all 2D combinations...")
+        for obj1, obj2 in itertools.combinations(range(n_objs), 2):
+            pareto_2d(results, obj1, obj2)
+            
+        # All combinations of 3 objectives
+        print("Generating all 3D combinations...")
+        for obj1, obj2, obj3 in itertools.combinations(range(n_objs), 3):
+            pareto_3d(results, obj1, obj2, obj3)
+            
+        print("Done generating all possible Pareto frontier plots!")

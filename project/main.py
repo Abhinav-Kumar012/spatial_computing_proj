@@ -62,16 +62,4 @@ for i, mapped_item in enumerate(pareto_data["mapping"], start=1):
     print(f"  -> Result {i}: {mapped_item['result']}")
     print(f"  -> Model {i} Name: {mapped_item['model_name']}")
     print(f"  -> Model {i} Path: {mapped_item['model_path']}\n")
-
-results = res.F
-
-parallel_plot(results)
-
-pareto_2d(results, 0, 1)
-pareto_2d(results, 0, 4)
-
-pareto_3d(results, 0, 1, 5)
-
-# New plots suggested for generating insights
-pareto_2d(results, 6, 5)    # n_params vs SSIM
-pareto_3d(results, 0, 4, 6) # SAM vs SF vs n_params
+
