@@ -4,8 +4,21 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
 
-RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
-os.makedirs(RESULTS_DIR, exist_ok=True)
+# =============================================================================
+# Variables for Visualization Configuration
+# =============================================================================
+import dill
+
+# Pick which model results file to load (must be a .pkl containing Pareto data)
+MODEL_DATA_PATH = os.path.join(os.path.dirname(__file__), "results", "pareto_front.pkl")
+
+# Define where to save the generated plots. 
+# Creates directory at the level of the "project" folder (e.g., spatial_computing_proj/visualization_outputs)
+project_root = os.path.dirname(os.path.dirname(__file__))
+SAVE_DIR = os.path.join(project_root, "visualization_outputs")
+
+os.makedirs(SAVE_DIR, exist_ok=True)
+# =============================================================================
 
 # Objective names in the order returned by nsga2_search._evaluate.
 # Negated objectives (CC, SF, SSIM) are stored as negative values by NSGA-2
@@ -35,7 +48,7 @@ def parallel_plot(results):
     parallel_coordinates(df, "index")
     plt.title("Pareto Front – Parallel Coordinates")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, "parallel_plot.png"), dpi=150)
+    plt.savefig(os.path.join(SAVE_DIR, "parallel_plot.png"), dpi=150)
     plt.show()
 
 
@@ -50,7 +63,7 @@ def pareto_2d(results, obj1, obj2):
     plt.ylabel(name2)
     plt.title(f"Pareto Front — {name1} vs {name2}")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_2d_{name1}_vs_{name2}.png"), dpi=150)
+    plt.savefig(os.path.join(SAVE_DIR, f"pareto_2d_{name1}_vs_{name2}.png"), dpi=150)
     plt.show()
 
 
@@ -68,5 +81,34 @@ def pareto_3d(results, a, b, c):
     ax.set_zlabel(nc)
     plt.title(f"Pareto Front 3D — {na}, {nb}, {nc}")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_3d_{na}_{nb}_{nc}.png"), dpi=150)
+    plt.savefig(os.path.join(SAVE_DIR, f"pareto_3d_{na}_{nb}_{nc}.png"), dpi=150)
     plt.show()
+
+if __name__ == "__main__":
+    print(f"Loading Pareto results from: {MODEL_DATA_PATH}")
+    if not os.path.exists(MODEL_DATA_PATH):
+        print("Error: The specified model data path does not exist.")
+    else:
+        with open(MODEL_DATA_PATH, "rb") as f:
+            data = dill.load(f)
+            
+        # Extract the objectives from the parsed unpickled file
+        if "raw_F" in data:
+            results = data["raw_F"]
+        elif "F" in data:
+            results = data["F"]
+        else:
+            raise ValueError("Could not find objective data ('raw_F' or 'F') in pickle file.")
+            
+        print(f"Generating and saving plots to: {SAVE_DIR}\n")
+        
+        parallel_plot(results)
+        
+        pareto_2d(results, 0, 1)   # SAM vs ERGAS
+        pareto_2d(results, 0, 4)   # SAM vs SF
+        pareto_2d(results, 6, 5)   # n_params vs SSIM
+        
+        pareto_3d(results, 0, 1, 5) # SAM vs ERGAS vs SSIM
+        pareto_3d(results, 0, 4, 6) # SAM vs SF vs n_params
+        
+        print("Done!")
