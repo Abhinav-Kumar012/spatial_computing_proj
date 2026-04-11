@@ -11,7 +11,7 @@ import itertools
 # Variables for Visualization Configuration
 # =============================================================================
 # Pick which model results file to load (must be a .pkl containing Pareto data)
-MODEL_DATA_PATH = os.path.join(os.path.dirname(__file__), "results", "pareto_front.pkl")
+MODEL_DATA_PATH = os.path.join(os.path.dirname(__file__), "../resultsv4", "pareto_front.pkl")
 
 # Define where to save the generated plots. 
 # Creates directory at the level of the "project" folder (e.g., spatial_computing_proj/visualization_outputs)
