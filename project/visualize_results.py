@@ -51,10 +51,15 @@ def parallel_plot(results):
     df["index"] = df["index"].astype(str)
 
     plt.figure(figsize=(12, 5))
-    parallel_coordinates(df, "index", colormap='viridis')
+    ax = parallel_coordinates(df, "index", colormap='viridis')
+    
+    # Move legend outside the plot so it doesn't cover data and axes
+    ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left')
+    
     plt.title("Pareto Front – Parallel Coordinates (Normalized [0,1])")
     plt.tight_layout()
-    plt.savefig(os.path.join(SAVE_DIR, "parallel_plot.png"), dpi=150)
+    # bbox_inches="tight" ensures the external legend is fully visible and not cut off 
+    plt.savefig(os.path.join(SAVE_DIR, "parallel_plot.png"), dpi=150, bbox_inches='tight')
     plt.close()
 
 
