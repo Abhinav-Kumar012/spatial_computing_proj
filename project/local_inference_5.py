@@ -177,10 +177,7 @@ def normalize(arr):
 
 
 def metric_direction(metric):
-    if metric in ["CC", "SF", "SSIM"]:
-        return "↑ better"
-    else:
-        return "↓ better"
+    return "Lower bar is better"
 
 # ==========================================
 # PIPELINES
