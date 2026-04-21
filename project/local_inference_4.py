@@ -89,7 +89,8 @@ def setup_dirs(name):
 
 
 def write_metrics(name, index, metrics):
-    with open(f"results_{name}.txt", "a") as f:
+    os.makedirs("results_txt", exist_ok=True)
+    with open(f"results_txt/results_{name}.txt", "a") as f:
         f.write(f"--- Index {index} ---\n")
         for k, v in metrics.items():
             if isinstance(v, (int, float, np.floating)):
@@ -369,7 +370,7 @@ def main():
     model_names = pareto_data["model_names"]
 
     for name in ["god", "brovey", "ihs"]:
-        txt_path = f"results_{name}.txt"
+        txt_path = f"results_txt/results_{name}.txt"
         if os.path.exists(txt_path):
             os.remove(txt_path)
 
