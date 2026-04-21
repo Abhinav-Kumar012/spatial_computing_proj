@@ -12,9 +12,11 @@ services:
     environment:
       - GOD_URL=http://backend_god:8000/fuse/god
       - BROVEY_URL=http://backend_brovey:8001/fuse/brovey
+      - IHS_URL=http://backend_ihs:8002/fuse/ihs
     depends_on:
       - backend_god
       - backend_brovey
+      - backend_ihs
 
   backend_god:
     build:
@@ -22,16 +24,8 @@ services:
       dockerfile: backend_god/Dockerfile
     volumes:
       - shared_tmp:/tmp/gradio
-      - ./results:/app/results
     ports:
       - "8000:8000"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
 
   backend_brovey:
     build:
@@ -41,13 +35,15 @@ services:
       - shared_tmp:/tmp/gradio
     ports:
       - "8001:8001"
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [gpu]
+
+  backend_ihs:
+    build:
+      context: ./project
+      dockerfile: backend_ihs/Dockerfile
+    volumes:
+      - shared_tmp:/tmp/gradio
+    ports:
+      - "8002:8002"
 
 volumes:
   shared_tmp:

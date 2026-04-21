@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./project
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "7860:7860"
+    volumes:
+      - shared_tmp:/tmp/gradio
+    environment:
+      - GOD_URL=http://backend_god:8000/fuse/god
+      - BROVEY_URL=http://backend_brovey:8001/fuse/brovey
+      - IHS_URL=http://backend_ihs:8002/fuse/ihs
+    depends_on:
+      - backend_god
+      - backend_brovey
+      - backend_ihs
+
+  backend_god:
+    build:
+      context: ./project
+      dockerfile: backend_god/Dockerfile
+    volumes:
+      - shared_tmp:/tmp/gradio
+      - ./results:/app/results
+    ports:
+      - "8000:8000"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  backend_brovey:
+    build:
+      context: ./project
+      dockerfile: backend_brovey/Dockerfile
+    volumes:
+      - shared_tmp:/tmp/gradio
+    ports:
+      - "8001:8001"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  backend_ihs:
+    build:
+      context: ./project
+      dockerfile: backend_ihs/Dockerfile
+    volumes:
+      - shared_tmp:/tmp/gradio
+    ports:
+      - "8002:8002"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  shared_tmp:
