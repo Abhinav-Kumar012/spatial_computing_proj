@@ -309,57 +309,64 @@ def plot_metrics():
     df = pd.DataFrame(all_results)
     metrics_list = ["SAM", "ERGAS", "CC", "SD", "SF", "SSIM"]
 
-    os.makedirs("plots_god_vs_brovey", exist_ok=True)
-    os.makedirs("plots_god_vs_ihs", exist_ok=True)
+    indices = df["index"].unique()
 
-    god_df = df[df["pipeline"] == "GOD"]
-    brovey_df = df[df["pipeline"] == "BROVEY"]
-    ihs_df = df[df["pipeline"] == "IHS"]
+    for idx in indices:
+        dir_brovey = os.path.join("plots_god_vs_brovey", str(idx))
+        dir_ihs = os.path.join("plots_god_vs_ihs", str(idx))
+        os.makedirs(dir_brovey, exist_ok=True)
+        os.makedirs(dir_ihs, exist_ok=True)
 
-    for metric in metrics_list:
-        # restore values
-        god_vals = [restore_metric(metric, v) for v in god_df[metric].values]
-        brovey_val = restore_metric(metric, brovey_df[metric].mean())
-        ihs_val = restore_metric(metric, ihs_df[metric].mean())
+        idx_df = df[df["index"] == idx]
+        god_df = idx_df[idx_df["pipeline"] == "GOD"]
+        brovey_df = idx_df[idx_df["pipeline"] == "BROVEY"]
+        ihs_df = idx_df[idx_df["pipeline"] == "IHS"]
 
-        # normalize
-        combined = god_vals + [brovey_val]
-        norm = normalize(combined)
-        god_norm = norm[:-1]
-        brovey_norm = norm[-1]
+        for metric in metrics_list:
+            # restore values
+            god_vals = [restore_metric(metric, v) for v in god_df[metric].values]
+            
+            brovey_val = restore_metric(metric, brovey_df[metric].iloc[0]) if not brovey_df.empty else 0
+            ihs_val = restore_metric(metric, ihs_df[metric].iloc[0]) if not ihs_df.empty else 0
 
-        combined2 = god_vals + [ihs_val]
-        norm2 = normalize(combined2)
-        god_norm2 = norm2[:-1]
-        ihs_norm = norm2[-1]
+            # normalize
+            combined = god_vals + [brovey_val]
+            norm = normalize(combined)
+            god_norm = norm[:-1]
+            brovey_norm = norm[-1]
 
-        direction = metric_direction(metric)
+            combined2 = god_vals + [ihs_val]
+            norm2 = normalize(combined2)
+            god_norm2 = norm2[:-1]
+            ihs_norm = norm2[-1]
 
-        # GOD vs Brovey
-        plt.figure()
-        plt.bar(range(len(god_norm)), god_norm)
-        plt.plot([brovey_norm]*len(god_norm), color='red')
+            direction = metric_direction(metric)
 
-        plt.title(f"{metric} ({direction}) (GOD vs Brovey)")
-        plt.xlabel("GOD Models")
-        plt.ylabel("Normalized Value")
-        plt.figtext(0.5, -0.08, "Line = Brovey", ha="center")
+            # GOD vs Brovey
+            plt.figure()
+            plt.bar(range(len(god_norm)), god_norm)
+            plt.plot([brovey_norm]*len(god_norm), color='red')
 
-        plt.savefig(f"plots_god_vs_brovey/{metric}.png", bbox_inches='tight')
-        plt.close()
+            plt.title(f"{metric} ({direction}) (GOD vs Brovey) - Index {idx}")
+            plt.xlabel("GOD Models")
+            plt.ylabel("Normalized Value")
+            plt.figtext(0.5, -0.08, "Line = Brovey", ha="center")
 
-        # GOD vs IHS
-        plt.figure()
-        plt.bar(range(len(god_norm2)), god_norm2)
-        plt.plot([ihs_norm]*len(god_norm2), color='green')
+            plt.savefig(os.path.join(dir_brovey, f"{metric}.png"), bbox_inches='tight')
+            plt.close()
 
-        plt.title(f"{metric} ({direction}) (GOD vs IHS)")
-        plt.xlabel("GOD Models")
-        plt.ylabel("Normalized Value")
-        plt.figtext(0.5, -0.08, "Line = IHS", ha="center")
+            # GOD vs IHS
+            plt.figure()
+            plt.bar(range(len(god_norm2)), god_norm2)
+            plt.plot([ihs_norm]*len(god_norm2), color='green')
 
-        plt.savefig(f"plots_god_vs_ihs/{metric}.png", bbox_inches='tight')
-        plt.close()
+            plt.title(f"{metric} ({direction}) (GOD vs IHS) - Index {idx}")
+            plt.xlabel("GOD Models")
+            plt.ylabel("Normalized Value")
+            plt.figtext(0.5, -0.08, "Line = IHS", ha="center")
+
+            plt.savefig(os.path.join(dir_ihs, f"{metric}.png"), bbox_inches='tight')
+            plt.close()
 
 
 # ==========================================
