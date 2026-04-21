@@ -62,4 +62,4 @@ for i, mapped_item in enumerate(pareto_data["mapping"], start=1):
     print(f"  -> Result {i}: {mapped_item['result']}")
     print(f"  -> Model {i} Name: {mapped_item['model_name']}")
     print(f"  -> Model {i} Path: {mapped_item['model_path']}\n")
-
+

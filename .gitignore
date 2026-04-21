@@ -2,3 +2,13 @@
 datav1/
 **/__pycache__/
 resultsv4/pareto_models/
+pansharpning_pareto_front/
+godenv
+output_brovey
+output_ihs
+output_god
+results_brovey.txt
+results_ihs.txt
+results_god.txt
+plots_god_vs_brovey
+plots_god_vs_ihs
