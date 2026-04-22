@@ -160,14 +160,14 @@ all_results = []
 # METRIC FIXING
 # ==========================================
 def restore_metric(metric_name, value):
-    if metric_name in ["SAM", "ERGAS", "SD"]:
-        return value * 10.0
-    elif metric_name == "CC":
-        return -value
-    elif metric_name == "SF":
-        return -value * 10.0
-    elif metric_name == "SSIM":
-        return -value
+    # if metric_name in ["SAM", "ERGAS", "SD"]:
+    #     return value * 10.0
+    # elif metric_name == "CC":
+    #     return -value
+    # elif metric_name == "SF":
+    #     return -value * 10.0
+    # elif metric_name == "SSIM":
+    #     return -value
     return value
 
 
@@ -177,7 +177,9 @@ def normalize(arr):
 
 
 def metric_direction(metric):
-    return "Lower bar is better"
+    if metric in ["SAM", "ERGAS", "SD"]:
+        return "Lower bar is better"
+    return "Higher bar is better"
 
 # ==========================================
 # PIPELINES
