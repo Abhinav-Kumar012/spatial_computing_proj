@@ -7,10 +7,13 @@ godenv
 output_brovey
 output_ihs
 output_god
+output_hwvit_nsga_2
 results_brovey.txt
 results_ihs.txt
 results_god.txt
 plots_god_vs_brovey
 plots_god_vs_ihs
+plots_hwvit_nsga_2_vs_brovey
+plots_hwvit_nsga_2_vs_ihs
 results_txt
 visualization_outputs_pairwise_scatter_plot
