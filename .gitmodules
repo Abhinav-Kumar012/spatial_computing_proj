@@ -1,0 +1,3 @@
+[submodule "models_pf"]
+	path = models_pf
+	url = https://huggingface.co/Vanos007/pansharpning_pareto_front
