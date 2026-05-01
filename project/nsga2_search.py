@@ -52,6 +52,10 @@ class FusionOptimization(Problem):
 
         results=[]
 
+        import hashlib
+        import os
+        
+        os.makedirs("results/all_models", exist_ok=True)
         tqdm.write(f"\n{'='*60}")
         tqdm.write(f"[NSGA-2] Evaluating {len(X)} individual(s)")
         tqdm.write(f"{'='*60}")
@@ -85,16 +89,20 @@ class FusionOptimization(Problem):
                   f"head_ch={head_channel}  "
                   f"dropout={params['dropout']:.3f}  lr={params['lr']:.2e}")
 
-            metrics=train_and_evaluate(params,self.train_path,self.test_path)
+            # Create a unique hash for the model parameters to store its weights
+            x_hash = hashlib.md5(str(list(x)).encode()).hexdigest()
+            temp_model_path = os.path.join("results", "all_models", f"model_{x_hash}.pt")
+
+            metrics=train_and_evaluate(params,self.train_path,self.test_path, save_path=temp_model_path)
 
             results.append([
-                metrics["SAM"],        # obj 0 — minimise
-                metrics["ERGAS"],      # obj 1 — minimise
-                -metrics["CC"],        # obj 2 — minimise (↑ CC)
-                metrics["SD"],         # obj 3 — minimise
-                -metrics["SF"],        # obj 4 — minimise (↑ SF)
-                -metrics["SSIM"],      # obj 5 — minimise (↑ SSIM)
-                metrics["n_params"],   # obj 6 — minimise (smaller model)
+                metrics["SAM"] / 10.0,
+                metrics["ERGAS"] / 10.0,
+                -metrics["CC"],
+                metrics["SD"] / 10.0,
+                -metrics["SF"] / 10.0,
+                -metrics["SSIM"],
+                metrics["n_params"] / 1e6,
             ])
 
             tqdm.write(f"  -> objectives: SAM={metrics['SAM']:.4f}  ERGAS={metrics['ERGAS']:.4f}  "

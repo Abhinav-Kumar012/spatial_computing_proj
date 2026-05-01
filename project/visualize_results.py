@@ -4,8 +4,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from pandas.plotting import parallel_coordinates
 
-RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
-os.makedirs(RESULTS_DIR, exist_ok=True)
+import dill
+import itertools
+
+# =============================================================================
+# Variables for Visualization Configuration
+# =============================================================================
+# Pick which model results file to load (must be a .pkl containing Pareto data)
+MODEL_DATA_PATH = os.path.join(os.path.dirname(__file__), "../resultsv4", "pareto_front.pkl")
+
+# Define where to save the generated plots. 
+# Creates directory at the level of the "project" folder (e.g., spatial_computing_proj/visualization_outputs)
+project_root = os.path.dirname(os.path.dirname(__file__))
+SAVE_DIR = os.path.join(project_root, "visualization_outputs")
+
+os.makedirs(SAVE_DIR, exist_ok=True)
+# =============================================================================
 
 # Objective names in the order returned by nsga2_search._evaluate.
 # Negated objectives (CC, SF, SSIM) are stored as negative values by NSGA-2
@@ -27,16 +41,26 @@ def parallel_plot(results):
     arr = _to_display(results)
     df  = pd.DataFrame(arr, columns=OBJ_NAMES[: arr.shape[1]])
 
+    # Normalize each column individually to [0, 1] to create an appropriate uniform scale
+    for col in df.columns:
+        if df[col].max() != df[col].min():
+            df[col] = (df[col] - df[col].min()) / (df[col].max() - df[col].min())
+
     # parallel_coordinates needs a string class column — use the solution index
     df = df.reset_index()
     df["index"] = df["index"].astype(str)
 
     plt.figure(figsize=(12, 5))
-    parallel_coordinates(df, "index")
-    plt.title("Pareto Front – Parallel Coordinates")
+    ax = parallel_coordinates(df, "index", colormap='viridis')
+    
+    # Move legend outside the plot so it doesn't cover data and axes
+    ax.legend(bbox_to_anchor=(1.04, 1), loc='upper left')
+    
+    plt.title("Pareto Front – Parallel Coordinates (Normalized [0,1])")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, "parallel_plot.png"), dpi=150)
-    plt.show()
+    # bbox_inches="tight" ensures the external legend is fully visible and not cut off 
+    plt.savefig(os.path.join(SAVE_DIR, "parallel_plot.png"), dpi=150, bbox_inches='tight')
+    plt.close()
 
 
 def pareto_2d(results, obj1, obj2):
@@ -50,8 +74,8 @@ def pareto_2d(results, obj1, obj2):
     plt.ylabel(name2)
     plt.title(f"Pareto Front — {name1} vs {name2}")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_2d_{name1}_vs_{name2}.png"), dpi=150)
-    plt.show()
+    plt.savefig(os.path.join(SAVE_DIR, f"pareto_2d_{name1}_vs_{name2}.png"), dpi=150)
+    plt.close()
 
 
 def pareto_3d(results, a, b, c):
@@ -68,5 +92,39 @@ def pareto_3d(results, a, b, c):
     ax.set_zlabel(nc)
     plt.title(f"Pareto Front 3D — {na}, {nb}, {nc}")
     plt.tight_layout()
-    plt.savefig(os.path.join(RESULTS_DIR, f"pareto_3d_{na}_{nb}_{nc}.png"), dpi=150)
-    plt.show()
+    plt.savefig(os.path.join(SAVE_DIR, f"pareto_3d_{na}_{nb}_{nc}.png"), dpi=150)
+    plt.close()
+
+if __name__ == "__main__":
+    print(f"Loading Pareto results from: {MODEL_DATA_PATH}")
+    if not os.path.exists(MODEL_DATA_PATH):
+        print("Error: The specified model data path does not exist.")
+    else:
+        with open(MODEL_DATA_PATH, "rb") as f:
+            data = dill.load(f)
+            
+        # Extract the objectives from the parsed unpickled file
+        if "raw_F" in data:
+            results = data["raw_F"]
+        elif "F" in data:
+            results = data["F"]
+        else:
+            raise ValueError("Could not find objective data ('raw_F' or 'F') in pickle file.")
+            
+        print(f"Generating and saving plots to: {SAVE_DIR}")
+        print("Creating PCP Plot...")
+        parallel_plot(results)
+        
+        n_objs = results.shape[1]
+        
+        # All combinations of 2 objectives
+        print("Generating all 2D combinations...")
+        for obj1, obj2 in itertools.combinations(range(n_objs), 2):
+            pareto_2d(results, obj1, obj2)
+            
+        # All combinations of 3 objectives
+        print("Generating all 3D combinations...")
+        for obj1, obj2, obj3 in itertools.combinations(range(n_objs), 3):
+            pareto_3d(results, obj1, obj2, obj3)
+            
+        print("Done generating all possible Pareto frontier plots!")
