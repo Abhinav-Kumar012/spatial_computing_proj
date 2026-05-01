@@ -25,7 +25,7 @@ def load_dataset(path, ratio):
     return pan_t, gt_t, ms_t, lms_t
 
 
-def train_and_evaluate(params, train_path, test_path):
+def train_and_evaluate(params, train_path, test_path, save_path=None):
     """
     Uses an 80/20 split of train_path (valid_wv3.h5) for training and validation.
     test_path (512x512, no gt) is NOT used here — it is only for final visual export.
@@ -93,6 +93,11 @@ def train_and_evaluate(params, train_path, test_path):
     # Evaluate on val split (same 64x64 spatial size, has gt)
     val_ds = torch.utils.data.TensorDataset(pan_val, ms_val, lms_val)
     val_dl = torch.utils.data.DataLoader(val_ds, batch_size=8, shuffle=False)
+
+    # Save the model if requested
+    if save_path:
+        torch.save(model.state_dict(), save_path)
+        print(f"  [train_and_evaluate] Saved model to {save_path}")
 
     print(f"  Evaluating on val split: {len(val_dl)} batches")
     model.eval()
